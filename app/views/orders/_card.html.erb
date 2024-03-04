@@ -1,10 +1,11 @@
-
-<div class="container">
-  <div class="card-product">
-    <div class="card-product-infos">
-      <h2> order id: to order address </h2>
-      <p>$30</p>
-      <p>03 March 2024</p>
+<%= link_to order_path(order), class: "link" do  %>
+  <div class="container">
+    <div class="card-product">
+      <div class="card-product-infos">
+        <h2> <%= order.id %>: <%= order.address %> </h2>
+        <p>$ <%= order.total_price %></p>
+        <p><%= order.order_date %></p>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
