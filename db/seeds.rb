@@ -1,9 +1,72 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
+
+# Destroy existing data
+puts "Destroying existing data..."
+
+OrderItem.destroy_all
+Order.destroy_all
+Item.destroy_all
+User.destroy_all
+
+puts "Seeding users..."
+
+# Create Users
+10.times do
+  User.create!(
+    email: Faker::Internet.unique.email,
+    password: 'password' # You may want to change this for better security
+  )
+end
+
+puts "#{User.count} users seeded."
+
+puts "Seeding items..."
+
+# Create Items
+20.times do
+  Item.create!(
+    name: Faker::Food.dish,
+    description: Faker::Lorem.sentence,
+    photo: Faker::LoremFlickr.image(size: "50x60", search_terms: ['food']),
+    price: Faker::Commerce.price(range: 0..100.0, as_string: true)
+  )
+end
+
+puts "#{Item.count} items seeded."
+
+puts "Seeding orders..."
+
+# Create Orders
+users = User.all
+items = Item.all
+
+# Create a single driver
+driver = User.create!(
+  email: Faker::Internet.unique.email,
+  password: 'password' # You may want to change this for better security
+)
+puts "Driver created: #{driver.email}"
+
+20.times do
+  order = Order.create!(
+    order_date: Faker::Date.backward(days: 14),
+    address: Faker::Address.full_address,
+    total_price: Faker::Commerce.price(range: 10..200.0, as_string: true),
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude,
+    customer_id: users.sample.id,
+    driver_id: driver.id # Assign the driver to each order
+  )
+
+  # Create Order Items
+  rand(1..5).times do
+    OrderItem.create!(
+      order: order,
+      item: items.sample,
+      quantity: rand(1..5)
+    )
+  end
+end
+
+puts "#{Order.count} orders seeded."
+puts "#{OrderItem.count} order items seeded."
