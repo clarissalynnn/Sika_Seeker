@@ -1,14 +1,14 @@
-
-
-	<button id="spin">Spin</button>
-	<span class="arrow"></span>
-<div class="container">
-	<div class="one">Surprise</div>
-	<div class="two">Surprise</div>
-	<div class="three">Surprise</div>
-	<div class="four">Surprise</div>
-	<div class="five">Surprise</div>
-	<div class="six">Surprise</div>
-	<div class="seven">Surprise</div>
-	<div class="eight">Surprise</div>
+<div data-controller="spinning-wheel" class="wheel-container">
+    <button data-action="click->spinning-wheel#spin" id="spin">Spin</button>
+    <span class="arrow"><i class="fa-solid fa-caret-down"></i></span>
+    <div data-spinning-wheel-target="container" class="container">
+        <div class="one">🍛</div>
+        <div class="two">🍛</div>
+        <div class="three">🍛</div>
+        <div class="four">🍛</div>
+        <div class="five">🍛</div>
+        <div class="six">🍛</div>
+        <div class="seven">🍛</div>
+        <div class="eight">🍛</div>
+    </div>
 </div>
