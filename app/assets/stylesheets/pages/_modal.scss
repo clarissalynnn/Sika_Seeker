@@ -1,0 +1,16 @@
+.btn-custom {
+  background-color: $yellow;
+  color: white;
+}
+
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom:active:focus {
+  background-color: $yellow;
+  color: white;
+}
+
+.border-custom{
+  border-color: $yellow !important;
+}

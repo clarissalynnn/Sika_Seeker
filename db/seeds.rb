@@ -27,7 +27,8 @@ puts "Seeding items..."
   Item.create!(
     name: Faker::Food.dish,
     description: Faker::Lorem.sentence,
-    photo: Faker::LoremFlickr.image(size: "50x60", search_terms: ['food']),
+    # photo: Faker::LoremFlickr.image(size: "50x60", search_terms: ['food']),
+    photo: "https://source.unsplash.com/random/?food&#{rand(1..1000)}",
     price: Faker::Commerce.price(range: 0..100.0, as_string: true)
   )
 end
