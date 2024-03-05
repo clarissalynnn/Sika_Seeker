@@ -1,0 +1,21 @@
+<div class="menu-grid app-pages app-section">
+  <div class="container">
+    <div class="pages-title">
+      <h3>Menu Grid</h3>
+    </div>
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="col-6">
+            <div class="entry">
+              <img src="img/sushi1.png" alt="">
+              <h6><a href=""><%= item.name %></a></h6>
+              <div class="price">
+                <h5>$ <%= item.price %></h5>
+              </div>
+              <button class="button">ADD TO CART</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
