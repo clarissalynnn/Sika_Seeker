@@ -1,20 +1,47 @@
-<h2>Log in</h2>
+<style>
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+  .login-form {
+    width: 100%; /* Ensure the form takes full width */
+  }
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+  .form-inputs {
+    width: 100%; /* Set form inputs to fill the container width */
+    margin-bottom: 10px;
+  }
 
-<%= render "devise/shared/links" %>
+  /* Adjust input field width */
+  .form-inputs input[type="text"],
+  .form-inputs input[type="password"] {
+    width: 100%;
+  }
+</style>
+
+
+<div class="login-container">
+  <h2>Log in</h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form' }) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Log in", class: "btn btn-primary col-12 mb-2" %>
+    </div>
+
+    <%= render "devise/shared/links" %>
+  <% end %>
+</div>
