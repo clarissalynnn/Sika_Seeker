@@ -29,7 +29,7 @@ puts "Seeding items..."
     description: Faker::Lorem.sentence,
     # photo: Faker::LoremFlickr.image(size: "50x60", search_terms: ['food']),
     photo: "https://source.unsplash.com/random/?food&#{rand(1..1000)}",
-    price: Faker::Commerce.price(range: 0..100.0, as_string: true)
+    price: Faker::Commerce.price(range: 1..100, as_string: true)
   )
 end
 

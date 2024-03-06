@@ -25,3 +25,7 @@ export default class extends Controller {
     }, spinDuration)
   }
 }
+
+
+// show min and max amount on the slider
+// apply price options and to random dishes

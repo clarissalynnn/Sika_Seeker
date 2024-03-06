@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'items/index' => "items#index"
-=======
 # Route for the loading page
   get 'loading', to: 'loading#show'
   root to: "loading#show"

@@ -1,18 +1,21 @@
 <div data-controller="spinning-wheel">
 
 <div class="wheel-wrapper">
-    <span class="arrow"><i class="fa-solid fa-caret-down"></i></span>
-    <div data-spinning-wheel-target="container" class="wheel-container">
-        <div class="one fs-1">❓</div>
-        <div class="two fs-1">❓</div>
-        <div class="three fs-1">❓</div>
-        <div class="four fs-1">❓</div>
-        <div class="five fs-1">❓</div>
-        <div class="six fs-1">❓</div>
-        <div class="seven fs-1">❓</div>
-        <div class="eight fs-1">❓</div>
-    </div>
-    <div class="wheel-btns ">
+
+  <%= render "slider" %>
+
+  <span class="arrow"><i class="fa-solid fa-caret-down"></i></span>
+  <div data-spinning-wheel-target="container" class="wheel-container">
+    <div class="one fs-1">❓</div>
+    <div class="two fs-1">❓</div>
+    <div class="three fs-1">❓</div>
+    <div class="four fs-1">❓</div>
+    <div class="five fs-1">❓</div>
+    <div class="six fs-1">❓</div>
+    <div class="seven fs-1">❓</div>
+    <div class="eight fs-1">❓</div>
+  </div>
+  <div class="wheel-btns ">
       <button data-action="click->spinning-wheel#spin" class="btn btn-custom w-100" id="spin">Spin</button>
       <button data-action="click->spinning-wheel#spin" class="btn btn-custom w-100 mt-2" id="spin">Go to Menu</button>
       <%# <button class="btn btn-custom"><%= link_to "Pick from Menu", ,  style: "text-decoration:none;"</button> %>
@@ -35,6 +38,7 @@
             <div class="rounded-4 d-flex justify-content-center align-items-center border border-custom border-3" style="background: url('<%= dish[1] %>') no-repeat center center; background-size: cover; width: 100%; padding-top: 100%;">
             </div>
             <h5><%= dish[0] %></h5>
+            <h5>Rp<%= dish[2].to_i %></h5>
           </div>
         <% end %>
         </div>
