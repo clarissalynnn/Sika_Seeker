@@ -1,4 +1,6 @@
 require 'faker'
+require_relative 'items.rb'
+
 
 # Destroy existing data
 puts "Destroying existing data..."
@@ -23,15 +25,16 @@ puts "#{User.count} users seeded."
 puts "Seeding items..."
 
 # Create Items
-20.times do
-  Item.create!(
-    name: Faker::Food.dish,
-    description: Faker::Lorem.sentence,
-    photo: Faker::LoremFlickr.image(size: "50x60", search_terms: ['food']),
-    price: Faker::Commerce.price(range: 0..100.0, as_string: true)
-  )
-end
-
+[Items::RICE, Items::ANIMAL_PROTEIN, Items::PLANT_PROTEIN, Items::VEGETABLES].each do |category|
+  category.each do |item_data|
+    Item.create!(
+      name: item_data[:name],
+      description: item_data[:description],
+      photo: item_data[:photo_url], # assuming photo_url is a direct link to an image
+      price: item_data[:price]
+    )
+  end
+  
 puts "#{Item.count} items seeded."
 
 puts "Seeding orders..."

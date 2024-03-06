@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page</title>
+    <%= stylesheet_link_tag 'loading_page', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="loader-container">
+    <img src="/assets/Sika-Seeker-logo-resized.png" alt="Logo" class="logo">
+  </div>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "<%= new_user_session_path %>";
+    }, 1500); // Redirect after 5 seconds
+  </script>
+</body>
+</html>

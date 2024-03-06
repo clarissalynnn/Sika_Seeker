@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+.wheel-wrapper {
+  margin: 0;
+  padding: 0;
+  background-color: $black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wheel-container {
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  border-radius: 50%;
+  border: 9px solid white;
+  position: relative;
+  overflow: hidden;
+  transition: 3s;
+}
+
+
+
+.wheel-container div {
+  height: 50%;
+  width: 120px;
+  position: absolute;
+  clip-path: polygon(100% 0, 50% 100%, 0 0);
+  transform: translateX(-50%);
+  transform-origin: bottom;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #fff;
+  left: 81px;
+}
+
+.wheel-container .one {
+  background-color: #F8DE7E;
+  left: 50%;
+}
+.wheel-container .two {
+  background-color: #FFFDD0;
+  transform: rotate(45deg);
+}
+.wheel-container .three {
+  background-color: #F8DE7E;
+  transform: rotate(90deg);
+}
+.wheel-container .four {
+  background-color: #FFFDD0;
+  transform: rotate(135deg);
+}
+.wheel-container .five {
+  background-color: #F8DE7E;
+  transform: rotate(180deg);
+}
+.wheel-container .six {
+  background-color: #FFFDD0;
+  transform: rotate(225deg);
+}
+.wheel-container .seven {
+  background-color: #F8DE7E;
+  transform: rotate(270deg);
+}
+.wheel-container .eight {
+  background-color: #FFFDD0;
+  transform: rotate(315deg);
+}
+
+.arrow {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  z-index: 1;
+}
+
+
+.fa-caret-down {
+  color: red;
+  font-size: 60px;
+}
+
+.wheel-btns {
+  margin-top: 20px;
+}
