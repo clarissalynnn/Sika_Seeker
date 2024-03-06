@@ -120,14 +120,9 @@ module Items
     {
       name: "Telor mata sapi",
       description: "Sunny side up",
-<<<<<<< HEAD
       photo_url: "sunny_side_up.png",
-      price: "8.000"
-=======
-      photo_url: "sun_side_up.png",
       price: "8.000",
       category: "animal protein"
->>>>>>> master
     },
     {
       name: " Telor balado",
@@ -231,14 +226,9 @@ module Items
     {
       name: "Tumis bayam dan tauge",
       description: "Sauteed spinach and beansprouts",
-<<<<<<< HEAD
       photo_url: "sauteed_spinach_and_beansprouts.png",
-      price: "6.000"
-=======
-      photo_url: "sauteed_spinach_beansprouts.png",
       price: "6.000",
       category: "vegetables"
->>>>>>> master
     },
     {
       name: "Tumis kangkung",

@@ -17,6 +17,10 @@
             </div>
           </div>
         <% end %>
+        <%= form_with(model: @order, method: :post) do |f| %>
+          <%= f.hidden_field :item_ids, data: { cart_number_target: 'items' } %>
+          <%= f.submit "Next", class: "btn btn-primary"%>
+        <% end %>
       </div>
   </div>
 </div>
