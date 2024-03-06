@@ -1,56 +1,3 @@
-<<<<<<< HEAD
-<div data-controller="spinning-wheel">
-
-<div class="wheel-wrapper">
-    <span class="arrow"><i class="fa-solid fa-caret-down"></i></span>
-    <div data-spinning-wheel-target="container" class="wheel-container">
-        <div class="one fs-1">❓</div>
-        <div class="two fs-1">❓</div>
-        <div class="three fs-1">❓</div>
-        <div class="four fs-1">❓</div>
-        <div class="five fs-1">❓</div>
-        <div class="six fs-1">❓</div>
-        <div class="seven fs-1">❓</div>
-        <div class="eight fs-1">❓</div>
-    </div>
-    <div class="wheel-btns ">
-      <button data-action="click->spinning-wheel#spin" class="btn btn-custom w-100" id="spin">Spin</button>
-      <button data-action="click->spinning-wheel#spin" class="btn btn-custom w-100 mt-2" id="spin">Go to Menu</button>
-      <%# <button class="btn btn-custom"><%= link_to "Pick from Menu", ,  style: "text-decoration:none;"</button> %>
-    </div>
-</div>
-
-
-<!-- Modal -->
-<div  data-spinning-wheel-target="modal" class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content p-3 rounded-3">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel"><strong> You're getting...</strong></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row gx-5 gy-5">
-        <% @random_dishes.each do |dish| %>
-          <div class="col-6 col-sm-4 text-center">
-            <div class="rounded-4 d-flex justify-content-center align-items-center border border-custom border-3" style="background: url('<%= dish[1] %>') no-repeat center center; background-size: cover; width: 100%; padding-top: 100%;">
-            </div>
-            <h5><%= dish[0] %></h5>
-          </div>
-        <% end %>
-        </div>
-      </div>
-      <div class="modal-footer d-flex justify-content-around">
-        <button type="button" class="btn btn-custom flex-grow-1 m-1" data-bs-dismiss="modal">Spin Again</button>
-        <button type="button" class="btn btn-custom flex-grow-1 m-1">Go to Menu</button>
-        <button type="button" class="btn btn-custom flex-grow-1 m-1">Check Out</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
-=======
 <div class="menu-grid app-pages app-section">
   <div class="container">
     <div class="pages-title">
@@ -60,7 +7,7 @@
         <% @items.each do |item| %>
           <div class="col-6">
             <div class="entry">
-              <img src="img/sushi1.png" alt="">
+              <%= image_tag item.photo, alt: "text" %>
               <h6><a href=""><%= item.name %></a></h6>
               <div class="price">
                 <h5>$ <%= item.price %></h5>
@@ -73,4 +20,3 @@
       </div>
   </div>
 </div>
->>>>>>> 9422e217303c5fb63eff33010acaf8b16d44afb9

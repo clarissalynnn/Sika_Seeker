@@ -6,12 +6,14 @@
   padding: 40px 0;
 }
 
-.entry{
+.entry {
   border-radius: 4px;
   padding: 10px;
   text-align: center;
   position: relative;
-  box-shadow: rgba(24, 26, 27, 0.14) 0px 0px 2px 0px, rgba(24, 26, 27, 0.12) 0px 1px 5px 0px, rgba(24, 26, 27, 0.2) 0px 0px 1px -2px;
+  box-shadow: rgba(24, 26, 27, 0.14) 0px 0px 2px 0px,
+    rgba(24, 26, 27, 0.12) 0px 1px 5px 0px,
+    rgba(24, 26, 27, 0.2) 0px 0px 1px -2px;
 
   .button {
     background-color: $yellow;
@@ -21,6 +23,16 @@
     padding: 5px 12px;
     font-size: 12px;
     font-weight: 700;
+  }
+
+  i {
+    text-align: right;
+    float: right;
+    color: $black;
+  }
+
+  img {
+    width: 100%;
   }
 }
 

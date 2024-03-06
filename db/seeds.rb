@@ -34,7 +34,7 @@ puts "Seeding items..."
       price: item_data[:price]
     )
   end
-  
+end
 puts "#{Item.count} items seeded."
 
 puts "Seeding orders..."

@@ -1,11 +1,45 @@
 .cart-title {
   padding: 10px;
-  border: 1px solid black;
-  background: green;
-
   img {
     width: 100%;
     height: 100%;
-    border: 1px solid #ddd;
+    border: 1px solid #161515;
+  }
+}
+
+#quantity {
+  height: 25px;
+  border: 1px solid #ccc;
+  padding: 0;
+  width: 40px;
+  text-align: center;
+  position: relative;
+  bottom: 4px;
+  background-color: transparent;
+}
+
+.col {
+  h6 {
+    margin: 0;
+    padding: 0;
+    line-height: 90%;
+    margin-block-start: 1.5em;
+    margin-block-end: 1.5em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+}
+.row {
+  .col {
+    float: left;
+    padding: 0 0.75rem;
+    min-height: 1px;
+  }
+}
+
+.row {
+  .col.s4 {
+    margin-left: auto;
+    width: 33.3%;
   }
 }

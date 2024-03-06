@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 # items routes
   get 'items/index', to: "items#index"
+  get 'items/roulette', to: "items#roulette"
 
 # Devise routes for users
 
