@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+
+  get 'items/index' => "items#index"
+=======
 # Route for the loading page
   get 'loading', to: 'loading#show'
   root to: "loading#show"
 
 # Devise routes for users
+
   devise_for :users
 
 
@@ -14,5 +18,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+
 end
