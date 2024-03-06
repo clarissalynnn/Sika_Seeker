@@ -1,0 +1,20 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw; // Ensure the container covers the entire viewport
+  background-color: #f0f0f0; // Optional: Set background color
+
+  .logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Cover the entire container while maintaining aspect ratio
+    object-position: center; // Center the image within the container
+  }
+}
