@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'items/index' => "items#index"
-=======
 # Route for the loading page
   get 'loading', to: 'loading#show'
   root to: "loading#show"
@@ -9,7 +8,6 @@ Rails.application.routes.draw do
 # Devise routes for users
 
   devise_for :users
-
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
