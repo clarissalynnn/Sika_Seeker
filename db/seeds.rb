@@ -1,3 +1,4 @@
+require 'faker'
 require_relative 'items.rb'
 
 
