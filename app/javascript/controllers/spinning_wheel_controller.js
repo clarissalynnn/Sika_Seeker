@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="spinning-wheel"
 export default class extends Controller {
-  static targets = ["container", "modal"]
+  static targets = ["container", "modal", "slider1", "slider2", "minOutput", "maxOutput"]
 
   connect() {
     // random starting position for the rotation
@@ -28,4 +28,4 @@ export default class extends Controller {
 
 
 // show min and max amount on the slider
-// apply price options and to random dishes
+// apply price options to random dishes

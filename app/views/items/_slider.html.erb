@@ -1,5 +1,11 @@
-<div class="double-slider">
-  <input type="range" min="0" max="100" value="25" class="slider" id="minRange">
-  <input type="range" min="0" max="100" value="75" class="slider" id="maxRange">
-  <p>Price Range: <span id="min"></span> - <span id="max"></span></p>
-</div>
+<%# <div class="slider-container mb-4">
+  <input class="slider"type="range" min="1" max="100" value="50" oninput="rangeValue.innerText = this.value">
+  <p class="text-center text-white">Price range: <span>1</span> - <span id="rangeValue">50</span></p>
+</div> %>
+
+<%= form_with model: @item, method: :get do |f| %>
+  <%= f.range_field :price, in: 1..100, value: 50, class: "slider", oninput: "rangeValue.innerText = this.value" %>
+  <p class="text-center text-white">Price range: 1 - <span id="rangeValue">50</span></p>
+  <%= f.submit 'Filter'%>
+
+<% end %>
