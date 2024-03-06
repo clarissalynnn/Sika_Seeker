@@ -20,5 +20,4 @@ Rails.application.routes.draw do
   get "/orders/:id", to: "orders#show", as: :order
   get "/orders", to: "orders#index"
   # Defines the root path route ("/")
-
 end
