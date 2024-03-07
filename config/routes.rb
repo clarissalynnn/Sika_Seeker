@@ -19,5 +19,9 @@ Rails.application.routes.draw do
   get "/orders/:id", to: "orders#show", as: :order
   get "/orders", to: "orders#index"
   post "/orders", to: "orders#create"
+
+  # Order track page
+  get "/orders/:id/track", to: "orders#track"
+
   # Defines the root path route ("/")
 end
