@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # Routes for the spinning wheel
   get 'items/index' => "items#index"
   get 'pages/wheel' => "pages#wheel"
   post 'pages/wheel' => "pages#wheel_api"
@@ -12,6 +13,9 @@ Rails.application.routes.draw do
 # items routes
   get 'items/index', to: "items#index"
   get 'items/roulette', to: "items#roulette"
+
+  # Routes for driver
+  get "drivers/:driver_id/orders" => "orders#drivers_orders_index"
 
 # Devise routes for users
 
