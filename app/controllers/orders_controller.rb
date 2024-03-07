@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
 
   def drivers_orders_index
-    @driver =
+    # @driver =
 
 
   end
