@@ -20,7 +20,7 @@
     border-color: transparent;
     color: white;
     border-radius: 2px;
-    padding: 5px 12px;
+    padding: 5px 28px;
     font-size: 12px;
     font-weight: 700;
   }
@@ -33,6 +33,7 @@
 
   img {
     width: 100%;
+    margin-bottom: 12px;
   }
 }
 
@@ -43,4 +44,43 @@
 .pages-title {
   margin-bottom: 30px;
   text-align: center;
+}
+
+// Styling for order_items
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 325px;
+  border: 0.25px solid darkgray;
+  margin-top: 15px;
+}
+
+.cart-image-title-button {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  margin-bottom: 15px;
+  .image-tag {
+    width: 100px;
+    border: 0.5px solid darkgray;
+  }
+}
+
+.price-container {
+  display: flex;
+  .price-label {
+    margin-left:125px;
+  }
+}
+
+.cart-quantity {
+  display: flex;
+  margin-bottom: 15px;
+  .input-field {
+    margin-left: 107px;
+  }
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: $yellow;
 }
