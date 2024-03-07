@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   get 'items/index' => "items#index"
+  get 'pages/wheel' => "pages#wheel"
+  post 'pages/wheel' => "pages#wheel_api"
+
+
 # Route for the loading page
   get 'loading', to: 'loading#show'
   root to: "loading#show"
@@ -8,7 +12,7 @@ Rails.application.routes.draw do
 # Devise routes for users
 
   devise_for :users
-  
+
   resources :orders
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
