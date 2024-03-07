@@ -12,8 +12,8 @@
               <div class="price">
                 <h5>$ <%= item.price %></h5>
               </div>
-              <button class="button" data-action='click->cart-number#addToCart'
-                data-item-id="<%= item.id %>">Add to plate</button>
+              <button class="button" data-cart-number-target='addButton' data-action='click->cart-number#addToCart'
+                data-item-id="<%= item.id %>">Add to cart</button>
             </div>
           </div>
         <% end %>
