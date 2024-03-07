@@ -31,10 +31,12 @@ puts "Seeding items..."
       name: item_data[:name],
       description: item_data[:description],
       photo: item_data[:photo_url], # assuming photo_url is a direct link to an image
-      price: item_data[:price]
+      price: item_data[:price],
+      category: item_data[:category]
     )
   end
-  
+end
+
 puts "#{Item.count} items seeded."
 
 puts "Seeding orders..."
