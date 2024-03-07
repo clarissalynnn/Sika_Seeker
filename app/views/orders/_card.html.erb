@@ -1,0 +1,11 @@
+<%= link_to order_path(order), class: "link" do  %>
+  <div class="container">
+    <div class="card-product">
+      <div class="card-product-infos">
+        <h2> <%= order.id %>: <%= order.address %> </h2>
+        <p>$ <%= order.total_price %></p>
+        <p><%= order.order_date %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

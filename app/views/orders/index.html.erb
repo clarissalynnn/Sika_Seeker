@@ -1,7 +1,8 @@
-<div class="container-dflex p-4">
- 	<div style="width: 100%; height: 600px;"
-  	data-controller="map"
-  	data-map-markers-value="<%= @markers.to_json %>"
-  	data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="container">
+    <div class="container my-3">
+      <h1 style="text-align: center">Orders</h1>
+    </div>
   </div>
-</div>
+<% @orders.each do |order| %>
+  <%= render "card", order: order %>
+<% end %>
