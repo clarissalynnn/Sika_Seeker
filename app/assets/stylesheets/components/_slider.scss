@@ -1,0 +1,25 @@
+input {
+  --c: #e0b531; /* active color */
+  --g: 8px; /* the gap */
+  --l: 5px; /* line thickness*/
+  --s: 20px; /* thumb size*/
+
+  width: 200px;
+  height: var(--s); /* needed for Firefox*/
+  -webkit-appearance :none;
+  -moz-appearance :none;
+  appearance :none;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+input[type="range" i]::-webkit-slider-thumb{
+  height: var(--s);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 0 var(--l) inset var(--c);
+  border-image: linear-gradient(90deg,var(--c) 50%,#ababab 0) 0 1/calc(50% - var(--l)/2) 100vw/0 calc(100vw + var(--g));
+  -webkit-appearance: none;
+  appearance: none;
+}

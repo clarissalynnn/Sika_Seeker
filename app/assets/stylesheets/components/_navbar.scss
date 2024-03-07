@@ -1,26 +1,12 @@
-body {
-  background: #fff;
-}
-.navbar-lewagon {
-  display: flex;
-  justify-content: space-between; /* Align items to the start and end */
-  align-items: center; /* Center the items vertically */
-  // background: white;
-  background-color: #222222;
+$header-font: "Niconne", "Helvetica", sans-serif;
+
+.navbar-brand h1 {
+  font-size: 40px;
+  font-family: $header-font;
+  background: linear-gradient(to right, #FF037D, #F4964A, #DF0102);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbowText 5s linear infinite alternate forwards;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-
-.navbar-cart img {
-  width: 40px; /* Adjust the width to make the cart smaller */
-}
-
-.navbar-toggler {
-  color: white;
-}

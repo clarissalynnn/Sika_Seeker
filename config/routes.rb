@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'items/index' => "items#index"
+  get 'pages/wheel' => "pages#wheel"
+  post 'pages/wheel' => "pages#wheel_api"
+
+
 # Route for the loading page
   get 'loading', to: 'loading#show'
   root to: "loading#show"
