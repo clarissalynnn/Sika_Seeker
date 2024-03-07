@@ -1,49 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="padding-bottom: 10px; position: fixed; top: 0; width: 100%; background-color: white;">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="padding: 0; position: fixed; top: 0; width: 100%;">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="offcanvas offcanvas-start custom-offcanvas" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContentLabel" style="width: 40%;">
-      <div class="offcanvas-body">
-        <ul class="navbar-nav me-auto flex-column"> <!-- Align items vertically -->
-          <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "#", class: "nav-link" do %>
-                <i class="fa fa-home" style="margin-right: 8px"></i>
-                Home
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "#", class: "nav-link" do %>
-                <i class="fa-solid fa-list" style="margin-right: 10px"></i>
-                Menu
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-                <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 10px"></i>
-                Log out
-              <% end %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+    <%= link_to "#", class: "navbar-brand text-center", style: "margin: 0;" do %>
+      <h1 class="rainbow-text" style="margin: 0;">Sika Seeker</h1>
+    <% end %>
 
-
-    <div class="navbar-cart">
-      <%= link_to "#" do %>
-        <%= image_tag "https://static.vecteezy.com/system/resources/thumbnails/004/798/846/small/shopping-cart-logo-or-icon-design-vector.jpg" %>
-      <% end %>
-    </div>
     <div>
-      <i class="fa" style="font-size:24px">&#xf07a;</i>
+      <i class="fa" style="font-size: 24px; margin-left: 16.99px">&#xf07a;</i>
       <span class='badge badge-warning' id='lblCartCount'> 0 </span>
+    </div>
+  </div>
+
+  <!-- Offcanvas content -->
+  <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContentLabel" style="width: 40%;">
+    <div class="offcanvas-body">
+      <ul class="navbar-nav me-auto flex-column">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fa fa-home" style="margin-right: 8px"></i>
+              Home
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fa-solid fa-list" style="margin-right: 10px"></i>
+              Menu
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" do %>
+              <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 10px"></i>
+              Log out
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>
