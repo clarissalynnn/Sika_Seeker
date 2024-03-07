@@ -55,8 +55,6 @@ export default class extends Controller {
       </div> `
       });
 
-
-
     // rotating by a randomly generated degree
     this.containerTarget.style.transform = "rotate(" + this.number + "deg)"
     this.number += Math.ceil(Math.random() * 1000)
