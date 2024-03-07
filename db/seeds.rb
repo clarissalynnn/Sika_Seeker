@@ -1,10 +1,8 @@
 require 'faker'
 require_relative 'items.rb'
 
-
 # Destroy existing data
 puts "Destroying existing data..."
-
 OrderItem.destroy_all
 Order.destroy_all
 Item.destroy_all
@@ -16,9 +14,17 @@ puts "Seeding users..."
 10.times do
   User.create!(
     email: Faker::Internet.unique.email,
-    password: 'password' # You may want to change this for better security
+    password: 'password'
   )
 end
+
+# Create a single driver
+driver = User.create!(
+  email: Faker::Internet.unique.email,
+  password: 'password',
+  is_driver: true
+)
+puts "Driver created: #{driver.email}"
 
 puts "#{User.count} users seeded."
 
@@ -30,7 +36,7 @@ puts "Seeding items..."
     Item.create!(
       name: item_data[:name],
       description: item_data[:description],
-      photo: item_data[:photo_url], # assuming photo_url is a direct link to an image
+      photo: item_data[:photo_url],
       price: item_data[:price],
       category: item_data[:category]
     )
@@ -40,16 +46,8 @@ puts "#{Item.count} items seeded."
 
 puts "Seeding orders..."
 
-# Create Orders
 users = User.all
 items = Item.all
-
-# Create a single driver
-driver = User.create!(
-  email: Faker::Internet.unique.email,
-  password: 'password' # You may want to change this for better security
-)
-puts "Driver created: #{driver.email}"
 
 20.times do
   order = Order.create!(
@@ -59,7 +57,7 @@ puts "Driver created: #{driver.email}"
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
     customer_id: users.sample.id,
-    driver_id: driver.id # Assign the driver to each order
+    driver_id: driver.id
   )
 
   # Create Order Items
