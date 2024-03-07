@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   has_many :order_items
 
   validate :driver_must_be_driver
+  validates :status, inclusion: { in: %w(pending in_progress out_for_delivery completed),
+                                  message: "%{value} is not a valid status" }
 
   private
 
