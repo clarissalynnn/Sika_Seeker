@@ -1,14 +1,29 @@
 class OrdersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :create ]
   def index
     @orders = Order.all
-    @order = Order.new
-    @markers = @orders.geocoded.map do |order|
-      {
-        lat: order.latitude,
-        lng: order.longitude,
-      	map_popup_html: render_to_string(partial: "map_popup", locals: { order: order }),
-  		  marker_html: render_to_string(partial: "marker")
-      }
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
+
+  def create
+    order = Order.create(
+    order_date: Date.today,
+    customer_id: 66,
+    driver_id: 65,
+    address: "Batu Bolong",
+    total_price: 100
+    )
+
+    params[:order][:item_ids].split(",").each do |item|
+      OrderItem.create(
+        item_id: item.to_i,
+        order_id: order.id,
+        quantity: 1
+      )
     end
+    redirect_to orders_path
   end
 end

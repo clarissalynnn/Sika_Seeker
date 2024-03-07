@@ -1,0 +1,26 @@
+<div class="menu-grid app-pages app-section">
+  <div class="container">
+    <div class="pages-title">
+      <h3>Menu Grid</h3>
+    </div>
+      <div class="row" data-controller='cart-number'>
+        <% @items.each do |item| %>
+          <div class="col-6">
+            <div class="entry">
+              <%= image_tag item.photo, alt: "text" %>
+              <h6><a href=""><%= item.name %></a></h6>
+              <div class="price">
+                <h5>$ <%= item.price %></h5>
+              </div>
+              <button class="button" data-action='click->cart-number#addToCart'
+                data-item-id="<%= item.id %>">Add to plate</button>
+            </div>
+          </div>
+        <% end %>
+        <%= form_with(model: @order, method: :post) do |f| %>
+          <%= f.hidden_field :item_ids, data: { cart_number_target: 'items' } %>
+          <%= f.submit "Next", class: "btn btn-primary"%>
+        <% end %>
+      </div>
+  </div>
+</div>

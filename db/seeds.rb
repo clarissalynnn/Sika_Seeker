@@ -36,7 +36,6 @@ puts "Seeding items..."
     )
   end
 end
-
 puts "#{Item.count} items seeded."
 
 puts "Seeding orders..."
