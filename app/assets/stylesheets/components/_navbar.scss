@@ -2,8 +2,11 @@ body {
   background: #fff;
 }
 .navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+  display: flex;
+  justify-content: space-between; /* Align items to the start and end */
+  align-items: center; /* Center the items vertically */
+  // background: white;
+  background-color: #222222;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -12,4 +15,12 @@ body {
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-cart img {
+  width: 40px; /* Adjust the width to make the cart smaller */
+}
+
+.navbar-toggler {
+  color: white;
 }
