@@ -1,33 +1,35 @@
 <% @order.order_items.each do |order_item| %>
 <div class="container">
-  <div class="cart-title">
-      <div class="row">
-        <div class="col s4">
-          <img src="img/food2.png" alt="">
-        </div>
-        <div class="col s7">
-          <h6><%= order_item.item.name %></h6>
-        </div>
-        <div class="col s1">
-          <a href=""><i class="fa fa-remove"></i></a>
-        </div>
+  <div class="entry">
+    <div class="cart-title">
+    <div class="row">
+      <div class="col s4">
+        <%= image_tag order_item.item.photo, alt: "text" %>
       </div>
-      <div class="row">
-        <div class="col s4">
-          <h6><%= order_item.quantity %></h6>
-        </div>
-        <div class="col s8">
-          <input type="number" value="1">
-        </div>
+      <div class="col s7">
+        <h6><%= order_item.item.name %></h6>
       </div>
-      <div class="row">
-        <div class="col s4">
-          <h6>Price</h6>
-        </div>
-        <div class="col s8">
-          <h6>$<%= order_item.item.price %></h6>
-        </div>
+      <div class="col s1">
+        <a href=""><i class="fa fa-remove"></i></a>
       </div>
+    </div>
+    <div class="row">
+      <div class="col s4">
+        <h6>Quantity</h6>
+      </div>
+      <div class="col s8">
+        <input id="quantity" type="number" value=<%= order_item.quantity %>>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s4">
+        <h6>Price</h6>
+      </div>
+      <div class="col s8">
+        <h6>$<%= order_item.item.price %></h6>
+      </div>
+    </div>
+  </div>
   </div>
 </div>
 <% end %>
