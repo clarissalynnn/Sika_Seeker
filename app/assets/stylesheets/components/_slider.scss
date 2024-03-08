@@ -1,5 +1,7 @@
 .slider {
 
+  z-index: 1;
+
    input {
     --c: #e0b531; /* active color */
     --g: 8px; /* the gap */
