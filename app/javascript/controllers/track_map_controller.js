@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
+import driving_steps from "./driving_steps.json" assert { type: "json" };
+
 // Connects to data-controller="track-map"
 export default class extends Controller {
   static values = {
@@ -29,6 +31,26 @@ export default class extends Controller {
 
     this.#addRoute();
     this.#addRoute();
+
+    // this.displayDrivingDirections();
+  }
+
+  displayDrivingDirections(steps) {
+    const drivingDiv = document.getElementById("directions");
+    drivingDiv.innerHTML = `<p><strong>Distance to destination: ${Math.floor(steps[0].distance)}m</strong></p>`;
+    const timeDiv = document.getElementById("time");
+    timeDiv.innerHTML = `<p><strong>Estimated delivery in : ${Math.floor(steps[0].duration)}min  🍜</strong></p>`;
+    // get the sidebar and add the instructions
+    const instructions = document.getElementById('instructions');
+
+    let tripInstructions = '';
+    for (const step of steps) {
+    tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+    }
+    instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+    steps[0].distance / 60
+    )} min 🛵 </strong></p><ol>${tripInstructions}</ol>`;
+
   }
 
   #addMarkersToMap() {
@@ -76,6 +98,8 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        this.displayDrivingDirections(data.routes[0].legs[0].steps);
+        // this.displayDrivingDirections(driving_steps);
 
         // let coordinates = data.geometry.coordinates;
         let coordinates = data.routes[0].geometry.coordinates;
