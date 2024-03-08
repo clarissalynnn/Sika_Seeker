@@ -16,5 +16,5 @@ class Order < ApplicationRecord
 
   def driver_must_be_driver
     errors.add(:driver, "must be a driver") unless driver&.is_driver?
-  end  
+  end
 end

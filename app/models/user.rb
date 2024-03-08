@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders
 
-  def self.drivers
+  def self.driver
     where(is_driver: true)
   end
 end
