@@ -4,7 +4,17 @@
   data-controller="track-map"
   data-track-map-order-marker-value="<%= @order_marker %>"
   data-track-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-<div class="container">
+<div class="container" id="directions">
+<div class="card">
+<ul>
+<li>Order #<%= @order.id %> ⏳</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li></ul>
+</div>
+
+
 </div>
 <div class="link"><%= link_to "Home", orders_path%></div>
 </div>
