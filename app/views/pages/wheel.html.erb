@@ -15,9 +15,14 @@
     <div class="eight fs-1">❓</div>
   </div>
   <div class="wheel-btns ">
-    <button data-action="click->spinning-wheel#spin" class="btn btn-custom w-100 mb-2" id="spin">Spin</button>
-    <button class="btn btn-custom w-100"><%= link_to "Go to Menu", items_index_path, style: "text-decoration:none; color: white;" %></button>
-  </div>
+
+      <button data-action="click->spinning-wheel#spin" class="btn btn-custom w-100" id="spin">Spin</button>
+      <%= link_to items_index_path, class: "btn btn-custom w-100 mt-2" do %>
+    Menu
+  <% end %>
+      <%# <button data-action="click->spinning-wheel#spin" class="btn btn-custom w-100 mt-2" id="spin">Go to Menu</button> %>
+      <%# <button class="btn btn-custom"><%= link_to "Pick from Menu", ,  style: "text-decoration:none;"</button> %>
+    </div>
 </div>
 
 

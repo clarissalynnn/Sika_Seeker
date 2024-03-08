@@ -6,7 +6,7 @@
   position: relative;
 
   .background-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -94,7 +94,7 @@
 
 .arrow {
   position: absolute;
-  top: 23%;
+  top: 21.5%;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;

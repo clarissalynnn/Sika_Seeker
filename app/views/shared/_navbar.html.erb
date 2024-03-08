@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <%= link_to "#", class: "navbar-brand text-center", style: "margin: 0;" do %>
+    <%= link_to pages_wheel_path, class: "navbar-brand text-center", style: "margin: 0;" do %>
       <h1 class="rainbow-text" style="margin: 0;">Sika Seeker</h1>
     <% end %>
 
@@ -21,15 +21,21 @@
       <ul class="navbar-nav me-auto flex-column">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to pages_wheel_path, class: "nav-link" do %>
               <i class="fa fa-home" style="margin-right: 8px"></i>
               Home
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to items_index_path, class: "nav-link" do %>
               <i class="fa-solid fa-list" style="margin-right: 10px"></i>
               Menu
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to about_path, class: "nav-link" do %>
+              <i class="fa-solid fa-info-circle" style="margin-right: 10px"></i>
+              About
             <% end %>
           </li>
           <li class="nav-item">
