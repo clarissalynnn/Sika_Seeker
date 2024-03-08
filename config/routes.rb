@@ -28,8 +28,9 @@ Rails.application.routes.draw do
   # for users and drivers
   get "/orders", to: "orders#index"
   post "/orders", to: "orders#create"
-  post 'orders/:id/accept', to: 'orders#accept', as: 'accept_order'
-  post 'orders/:id/decline', to: 'orders#decline', as: 'decline_order'
+  post 'orders/:id/in_progress', to: 'orders#in_progress', as: 'in_progress_order'
+  post 'orders/:id/out_for_delivery', to: 'orders#out_for_delivery', as: 'out_for_delivery_order'
+  post 'orders/:id/completed', to: 'orders#completed', as: 'completed_order'
 
   # Order track page
   get "/orders/:id/track", to: "orders#track"

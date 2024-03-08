@@ -1,7 +1,6 @@
-<h1>Driver</h1>
   <div class="container mt-5">
     <div class="container my-3">
-      <h1 style="text-align: center">Orders</h1>
+      <h1 style="text-align: center">Driver | Orders</h1>
     </div>
   </div>
 <% @driver_orders.each do |order| %>
@@ -16,11 +15,11 @@
           </div>
           <div class="pe-2">
             <% if order.status == "pending" %>
-              <button class="btn btn-warning disabled text-end">Pending</button>
-            <% elsif order.status == "accepted" %>
-              <button class="btn btn-success disabled text-end">Accepted</button>
+              <button class="btn btn-warning disabled text-end">In progress</button>
+            <% elsif order.status == "out_for_delivery" %>
+              <button class="btn btn-info disabled text-end">Out for delivery</button>
             <% else %>
-              <button class="btn btn-danger disabled text-end">Declined</button>
+              <button class="btn btn-success disabled text-end">Completed</button>
             <% end %>
           </div>
 

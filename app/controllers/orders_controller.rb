@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
     @orders = Order.all.order(created_at: :desc)
     @driver = current_user
     @driver_orders = Order.where(driver_id: @driver.id)
-    # @bookings_as_renter = @user.bookings.order(status: :desc)
   end
 
   def show
@@ -33,23 +32,30 @@ class OrdersController < ApplicationController
   end
 
 
-  def accept
+  def in_progress
     @order = Order.find(params[:id])
-    if @order.update(status: 'accepted')
-      flash[:notice] = "Order accepted ✅"
-    else
-      redirect_to orders_path(@order)
+    if @order.update(status: 'in_progress')
+      flash[:notice] = "Order in progress"
+      redirect_to orders_path
     end
   end
 
-  def decline
+  def out_for_delivery
     @order = Order.find(params[:id])
-    if @order.update(status: 'declined')
-      flash[:alert] = "Order declined ❌"
-    else
-      redirect_to orders_path(@order)
+    if @order.update(status: 'out_for_delivery')
+      flash[:alert] = "Order out for delivery"
+      redirect_to orders_path
     end
   end
+
+  def completed
+    @order = Order.find(params[:id])
+    if @order.update(status: 'completed')
+      flash[:alert] = "Order completed "
+      redirect_to orders_path
+    end
+  end
+
 
   def track
     @order = Order.find(params[:id])

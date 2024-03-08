@@ -2,6 +2,7 @@
     <div class="card py-2 px-2">
       <div class="card-body">
         <h2> Order #<%= @order.id %></h2>
+        <h2>Address:</h2>
         <h2> <%= @order.address %> </h2>
         <p class="fw-bold">Order items:</p>
         <% @order.order_items.each do |order_item| %>
@@ -19,10 +20,10 @@
         <p><%= @order.order_date %></p>
         </div>
         <div class="show-btns d-flex justify-content-center mt-5">
-        <button class="btn btn-success rounded me-5"><%= link_to "Accept order", accept_order_path(@order),
-        style: "text-decoration:none; color: black;" , data: {turbo_method: :post, turbo_confirm: "Accept order?"}%></button>
-        <button class="btn btn-danger rounded"><%= link_to "Decline order", decline_order_path(@order),
-        style: "text-decoration:none; color: black", data: {turbo_method: :post, turbo_confirm: "Decline order?"}%></button>
+        <button class="btn btn-custom me-3"><%= link_to "Order out for delivery", out_for_delivery_order_path(@order),
+        style: "text-decoration:none; color: white;" , data: {turbo_method: :post, turbo_confirm: "Update order as out for delivery?"}%></button>
+        <button class="btn btn-custom"><%= link_to "Order completed", completed_order_path(@order),
+        style: "text-decoration:none; color: white", data: {turbo_method: :post, turbo_confirm: "Update order as completed?"}%></button>
       </div>
       </div>
     </div>
