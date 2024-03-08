@@ -21,7 +21,7 @@ export default class extends Controller {
       body: JSON.stringify({ price: this.filterTarget.value })
     })
       .then(response => response.json())
-      .then(data => {
+      .then((data) => {
         console.log(data);
 
         const filteredDishes = data.random_dishes.map(dish => {
@@ -58,16 +58,6 @@ export default class extends Controller {
     // rotating by a randomly generated degree
     this.containerTarget.style.transform = "rotate(" + this.number + "deg)"
     this.number += Math.ceil(Math.random() * 1000)
-      </div>`;
-
-        // Adding event listener to the "Go to Menu" button
-        document.getElementById('go-to-menu-btn').addEventListener('click', () => {
-          window.location.href = '/items/index'; // Redirect to items/index
-        });
-      });
-
-    this.containerTarget.style.transform = "rotate(" + this.number + "deg)";
-    this.number += Math.ceil(Math.random() * 1000);
 
     const spinDuration = 3500;
 
