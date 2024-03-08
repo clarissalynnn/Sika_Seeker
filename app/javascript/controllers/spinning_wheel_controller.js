@@ -21,14 +21,14 @@ export default class extends Controller {
       body: JSON.stringify({ price: this.filterTarget.value })
     })
       .then(response => response.json())
-      .then(data => {
+      .then((data) => {
         console.log(data);
 
         const filteredDishes = data.random_dishes.map(dish => {
           return `<div class="col-6 col-sm-4 text-center">
           <div class="rounded-4 d-flex justify-content-center align-items-center border border-custom border-3" style="background: url('${dish[1]}') no-repeat center center; background-size: cover; width: 100%; padding-top: 100%;">
           </div>
-          <h5>${dish[0]}</h5>
+          <h5 class="pt-2">${dish[0]}</h5>
           <h5>Rp${dish[2]}</h5>
         </div>`;
         });
@@ -41,7 +41,7 @@ export default class extends Controller {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div class="row gx-5 gy-5">
+              <div class="row gx-2 gy-2">
               ${filteredDishes.join("")}
               </div>
             </div>
@@ -52,16 +52,12 @@ export default class extends Controller {
             </div>
           </div>
         </div>
-      </div>`;
-
-        // Adding event listener to the "Go to Menu" button
-        document.getElementById('go-to-menu-btn').addEventListener('click', () => {
-          window.location.href = '/items/index'; // Redirect to items/index
-        });
+      </div> `
       });
 
-    this.containerTarget.style.transform = "rotate(" + this.number + "deg)";
-    this.number += Math.ceil(Math.random() * 1000);
+    // rotating by a randomly generated degree
+    this.containerTarget.style.transform = "rotate(" + this.number + "deg)"
+    this.number += Math.ceil(Math.random() * 1000)
 
     const spinDuration = 3500;
 

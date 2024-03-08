@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="container my-3">
+      <h1 style="text-align: center">Orders</h1>
+    </div>
+  </div>
+<% @orders.each do |order| %>
+  <%= render "card", order: order %>
+<% end %>

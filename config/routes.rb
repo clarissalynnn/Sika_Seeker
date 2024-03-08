@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # Routes for the spinning wheel
   get 'items/index' => "items#index"
   get 'about', to: 'pages#about', as: 'about'
   get 'pages/wheel' => "pages#wheel"
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
 
   # items routes
   get 'items/index', to: "items#index"
-  get 'items/roulette', to: "items#roulette"
+
 
   # Devise routes for users
 
@@ -25,8 +26,12 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "/orders/:id", to: "orders#show", as: :order
+  # for users and drivers
   get "/orders", to: "orders#index"
   post "/orders", to: "orders#create"
+  post 'orders/:id/in_progress', to: 'orders#in_progress', as: 'in_progress_order'
+  post 'orders/:id/out_for_delivery', to: 'orders#out_for_delivery', as: 'out_for_delivery_order'
+  post 'orders/:id/completed', to: 'orders#completed', as: 'completed_order'
 
   # Order track page
   get "/orders/:id/track", to: "orders#track"
