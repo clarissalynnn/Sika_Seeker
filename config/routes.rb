@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'items/index' => "items#index"
+  get 'about', to: 'pages#about', as: 'about'
   get 'pages/wheel' => "pages#wheel"
   post 'pages/wheel' => "pages#wheel_api"
 

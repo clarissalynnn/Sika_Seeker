@@ -119,7 +119,7 @@
   <div>
     <%= form_with(model: @order, method: :post) do |f| %>
       <%= f.hidden_field :item_ids, data: { cart_number_target: 'items' } %>
-      <%= f.submit "Next", class: "btn btn-primary"%>
+      <%= f.submit "Next", class: "btn btn-warning col-12 my-2"%>
     <% end %>
   </div>
 </div>
