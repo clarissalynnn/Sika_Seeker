@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   get 'loading', to: 'loading#show'
   root to: "loading#show"
 
-# items routes
+  # items routes
   get 'items/index', to: "items#index"
   get 'items/roulette', to: "items#roulette"
 
-# Devise routes for users
+  # Devise routes for users
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'
@@ -26,5 +26,9 @@ Rails.application.routes.draw do
   get "/orders/:id", to: "orders#show", as: :order
   get "/orders", to: "orders#index"
   post "/orders", to: "orders#create"
+
+  # Order track page
+  get "/orders/:id/track", to: "orders#track"
+
   # Defines the root path route ("/")
 end

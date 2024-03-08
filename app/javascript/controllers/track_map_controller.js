@@ -1,0 +1,144 @@
+import { Controller } from "@hotwired/stimulus";
+
+// Connects to data-controller="track-map"
+export default class extends Controller {
+  static values = {
+    apiKey: String,
+    orderMarker: Object,
+  };
+
+  connect() {
+    console.log("track-map connected...");
+    // console.log(this.apiKeyValue);
+    // console.log(this.orderMarkerValue);
+
+    mapboxgl.accessToken = this.apiKeyValue;
+    this.map = new mapboxgl.Map({
+      container: this.element,
+      style: "mapbox://styles/mapbox/streets-v10",
+    });
+
+    this.fromLocation = [115.1295623, -8.6508524]; // Warung Sika's location
+    this.toLocation = [this.orderMarkerValue.lng, this.orderMarkerValue.lat];
+
+    this.from = turf.featureCollection([turf.point(this.fromLocation)]);
+    this.to = turf.featureCollection([turf.point(this.toLocation)]);
+
+    this.#addMarkersToMap();
+    this.#fitMapToMarkers();
+
+    this.#addRoute();
+    this.#addRoute();
+  }
+
+  #addMarkersToMap() {
+    // Order Marker
+    const orderPopup = new mapboxgl.Popup().setHTML(
+      this.orderMarkerValue.info_window_html
+    );
+    new mapboxgl.Marker()
+      .setLngLat([this.orderMarkerValue.lng, this.orderMarkerValue.lat])
+      .setPopup(orderPopup)
+      .addTo(this.map);
+
+    // Warung Sika Marker
+    const sikaPopup = new mapboxgl.Popup().setHTML(
+      `<h2>Warung Sika</h2>
+      <button class="mapboxgl-popup-close-button" type="button" aria-label="Close popup" aria-hidden="true">×</button>`
+    );
+    new mapboxgl.Marker()
+      .setLngLat([115.1295623, -8.6508524])
+      .setPopup(sikaPopup)
+      .addTo(this.map);
+  }
+
+  #fitMapToMarkers() {
+    const bounds = new mapboxgl.LngLatBounds();
+    bounds.extend([this.orderMarkerValue.lng, this.orderMarkerValue.lat]);
+    bounds.extend([115.1295623, -8.6508524]); // Extend bounds to Warung Sika as well
+
+    // this.markersValue.forEach((marker) =>
+    //   bounds.extend([marker.lng, marker.lat])
+    // );
+
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  }
+
+  #addRoute() {
+    fetch(
+      `https://api.mapbox.com/directions/v5/mapbox/driving/${this.fromLocation.join(
+        ","
+      )};${this.toLocation.join(
+        ","
+      )}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+      { method: "GET" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+
+        // let coordinates = data.geometry.coordinates;
+        let coordinates = data.routes[0].geometry.coordinates;
+        // console.log(coordinates);
+        const len = coordinates.length;
+        const distributions = [1, 2];
+        if (len > 12) {
+          coordinates.splice(1, coordinates.length - 12);
+        }
+        // console.log(coordinates);
+
+        fetch(
+          `https://api.mapbox.com/optimized-trips/v1/mapbox/driving/${coordinates.join(
+            ";"
+          )}?distributions=${distributions}&overview=full&steps=true&geometries=geojson&roundtrip=false&source=first&destination=last&access_token=${
+            mapboxgl.accessToken
+          }`,
+          { method: "GET" }
+        )
+          .then((response) => response.json())
+          .then((data2) => {
+            console.log(data2);
+            const nothing = turf.featureCollection([]);
+
+            const routeGeoJSON = turf.featureCollection([
+              turf.feature(data2.trips[0].geometry),
+            ]);
+            // debugger;
+
+            if (this.map.getSource("route")) {
+              this.map.getSource("route").setData(routeGeoJSON);
+            } else {
+              this.map.addSource("route", {
+                type: "geojson",
+                data: nothing,
+              });
+
+              this.map.addLayer(
+                {
+                  id: "routeline-active",
+                  type: "line",
+                  source: "route",
+                  layout: {
+                    "line-join": "round",
+                    "line-cap": "round",
+                  },
+                  paint: {
+                    "line-color": "green",
+                    "line-width": [
+                      "interpolate",
+                      ["linear"],
+                      ["zoom"],
+                      12,
+                      3,
+                      22,
+                      12,
+                    ],
+                  },
+                },
+                "waterway-label"
+              );
+            }
+          });
+      });
+  }
+}
