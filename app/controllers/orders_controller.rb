@@ -28,7 +28,6 @@ class OrdersController < ApplicationController
   end
 
   def track
-    @orders = Order.all
     @order = Order.find(params[:id])
 
     @order_marker = {
