@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-
-# Route for the loading page
+  # Route for the loading page
   get 'loading', to: 'loading#show'
   root to: "loading#show"
 
-# items routes
+  # items routes
   get 'items/index', to: "items#index"
   get 'items/roulette', to: "items#roulette"
 
-# Devise routes for users
+  # Devise routes for users
 
   devise_for :users
 

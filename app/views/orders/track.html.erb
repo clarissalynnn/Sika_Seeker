@@ -1,6 +1,10 @@
-<h1>Order Tracking</h1>
-
-<div style="width: 100%; height: 600px;"
+<div class="container p-2">
+<h1 class="tracking-title">Sika Seeker order  #<%= @order.id %> status</h1>
+<div style="width: 100%; height: 400px;"
   data-controller="track-map"
   data-track-map-order-marker-value="<%= @order_marker %>"
   data-track-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<div class="container">
+</div>
+<div class="link"><%= link_to "Home", orders_path%></div>
+</div>
