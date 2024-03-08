@@ -12,10 +12,7 @@ Rails.application.routes.draw do
 
 # items routes
   get 'items/index', to: "items#index"
-  get 'items/roulette', to: "items#roulette"
 
-  # Routes for driver
-  get "drivers/:driver_id/orders" => "orders#drivers_orders_index"
 
 # Devise routes for users
 
@@ -28,7 +25,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "/orders/:id", to: "orders#show", as: :order
+  # for users and drivers
   get "/orders", to: "orders#index"
   post "/orders", to: "orders#create"
+  post 'orders/:id/accept', to: 'orders#accept', as: 'accept_order'
+  post 'orders/:id/decline', to: 'orders#decline', as: 'decline_order'
+
   # Defines the root path route ("/")
 end

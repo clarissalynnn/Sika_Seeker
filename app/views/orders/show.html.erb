@@ -1,5 +1,5 @@
-<% @order.order_items.each do |order_item| %>
-  <div class="container">
-    <%= render "item_card", order_item: order_item %>
-  </div>
-<% end %>
+ <% if current_user.is_driver? %>
+    <%= render "drivers_show" %>
+  <% else %>
+    <%= render "users_show" %>
+  <% end %>

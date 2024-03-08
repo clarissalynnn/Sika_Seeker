@@ -28,7 +28,7 @@ export default class extends Controller {
         return `<div class="col-6 col-sm-4 text-center">
           <div class="rounded-4 d-flex justify-content-center align-items-center border border-custom border-3" style="background: url('${dish[1]}') no-repeat center center; background-size: cover; width: 100%; padding-top: 100%;">
           </div>
-          <h5>${dish[0]}</h5>
+          <h5 class="pt-2">${dish[0]}</h5>
           <h5>Rp${dish[2]}</h5>
         </div>`
       })
@@ -41,7 +41,7 @@ export default class extends Controller {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div class="row gx-5 gy-5">
+              <div class="row gx-2 gy-2">
               ${filteredDishes.join("")}
               </div>
             </div>
