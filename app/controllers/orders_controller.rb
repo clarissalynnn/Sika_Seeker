@@ -12,10 +12,11 @@ class OrdersController < ApplicationController
 
 
   def create
+    # binding.break
     order = Order.create(
     order_date: Date.today,
-    customer_id: 66,
-    driver_id: 65,
+    customer_id: current_user.id,
+    driver_id: User.drivers.first.id,
     address: "Batu Bolong",
     total_price: 100,
     status: "pending"
@@ -28,7 +29,8 @@ class OrdersController < ApplicationController
         quantity: 1
       )
     end
-    redirect_to orders_path
+    # redirect_to orders_path
+    redirect_to order_path(order)
   end
 
 
