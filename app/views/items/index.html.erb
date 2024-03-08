@@ -1,11 +1,33 @@
-<div class="container-menu" data-controller="cart-number">
-  <div class="menu-grid app-pages app-section">
-    <div class="container">
-      <div class="pages-title">
-        <h3>Menu</h3>
+<div class="menu-grid app-pages app-section">
+  <div class="container">
+    <div class="pages-title">
+      <h3>Menu</h3>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div data-controller="search-menu">
+        <%= form_with url: items_index_path, method: :get, html: {class: "mb-4", data: {search_menu_target: "form", action: "submit->search-menu#clear"}} do |f| %>
+          <%= f.label :query, "Search a dish" %>
+          <%= f.text_field :query,
+                           class: "form-control",
+                           value: params[:query],
+                           data: {
+                             search_menu_target: "input",
+                             action: "keyup->search-menu#update"
+                            }
+                           %>
+        <% end %>
+        <div data-search-menu-target="list" class="d-none">
+         <%= render "list", items: @items %>
+        </div>
       </div>
     </div>
   </div>
+</div>
+<div class="container" data-controller="cart-number">
   <div class="accordion" id="accordionExample">
     <div class="accordion-item" data-bs-toggle="collapse">
       <h2 class="accordion-header">
