@@ -2,11 +2,14 @@ class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :create ]
   def index
     @orders = Order.all.order(created_at: :desc)
+    @driver = current_user
+    @driver_orders = Order.where(driver_id: @driver.id)
   end
 
   def show
     @order = Order.find(params[:id])
   end
+
 
   def create
     order = Order.create(
@@ -14,7 +17,8 @@ class OrdersController < ApplicationController
     customer_id: 66,
     driver_id: 65,
     address: "Batu Bolong",
-    total_price: 100
+    total_price: 100,
+    status: "pending"
     )
 
     params[:order][:item_ids].split(",").each do |item|
@@ -26,6 +30,32 @@ class OrdersController < ApplicationController
     end
     redirect_to orders_path
   end
+
+
+  def in_progress
+    @order = Order.find(params[:id])
+    if @order.update(status: 'in_progress')
+      flash[:notice] = "Order in progress"
+      redirect_to orders_path
+    end
+  end
+
+  def out_for_delivery
+    @order = Order.find(params[:id])
+    if @order.update(status: 'out_for_delivery')
+      flash[:alert] = "Order out for delivery"
+      redirect_to orders_path
+    end
+  end
+
+  def completed
+    @order = Order.find(params[:id])
+    if @order.update(status: 'completed')
+      flash[:alert] = "Order completed "
+      redirect_to orders_path
+    end
+  end
+
 
   def track
     @order = Order.find(params[:id])
