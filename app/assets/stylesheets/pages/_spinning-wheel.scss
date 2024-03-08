@@ -2,6 +2,22 @@
   box-sizing: border-box;
 }
 
+.background-wrapper {
+  position: relative;
+
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(100, 100, 100, 0.7), rgba(100, 100, 100, 0.3)), url('Sika-Seeker-logo-resized.png') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 0;
+  }
+}
+
 .wheel-wrapper {
   margin: 0;
   padding: 0;
@@ -12,20 +28,18 @@
   justify-content: center;
   height: 100vh;
   overflow: hidden;
+  z-index: 1; // Ensure the wheel sits above the background overlay
 }
 
 .wheel-container {
   width: 300px;
   height: 300px;
-  background-color: white;
   border-radius: 50%;
   border: 9px solid white;
   position: relative;
   overflow: hidden;
   transition: 3s;
 }
-
-
 
 .wheel-container div {
   height: 50%;
@@ -46,47 +60,46 @@
 }
 
 .wheel-container .one {
-  background-color: #F8DE7E;
+  background-color: rgba(248, 222, 126, 0.8); // Adjust transparency here (0.8 for example)
   left: 50%;
 }
 .wheel-container .two {
-  background-color: #FFFDD0;
+  background-color: rgba(255, 253, 208, 0.8); // Adjust transparency here (0.8 for example)
   transform: rotate(45deg);
 }
 .wheel-container .three {
-  background-color: #F8DE7E;
+  background-color: rgba(248, 222, 126, 0.8); // Adjust transparency here (0.8 for example)
   transform: rotate(90deg);
 }
 .wheel-container .four {
-  background-color: #FFFDD0;
+  background-color: rgba(255, 253, 208, 0.8); // Adjust transparency here (0.8 for example)
   transform: rotate(135deg);
 }
 .wheel-container .five {
-  background-color: #F8DE7E;
+  background-color: rgba(248, 222, 126, 0.8); // Adjust transparency here (0.8 for example)
   transform: rotate(180deg);
 }
 .wheel-container .six {
-  background-color: #FFFDD0;
+  background-color: rgba(255, 253, 208, 0.8); // Adjust transparency here (0.8 for example)
   transform: rotate(225deg);
 }
 .wheel-container .seven {
-  background-color: #F8DE7E;
+  background-color: rgba(248, 222, 126, 0.8); // Adjust transparency here (0.8 for example)
   transform: rotate(270deg);
 }
 .wheel-container .eight {
-  background-color: #FFFDD0;
+  background-color: rgba(255, 253, 208, 0.8); // Adjust transparency here (0.8 for example)
   transform: rotate(315deg);
 }
 
 .arrow {
   position: absolute;
-  top: 28%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
   z-index: 1;
 }
-
 
 .fa-caret-down {
   color: red;
@@ -95,4 +108,6 @@
 
 .wheel-btns {
   margin-top: 20px;
+  z-index: 2;
+  opacity: 0.9;
 }

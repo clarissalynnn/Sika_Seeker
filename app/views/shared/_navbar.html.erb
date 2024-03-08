@@ -1,31 +1,42 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="padding: 0; position: fixed; top: 0; width: 100%;">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+    <%= link_to "#", class: "navbar-brand text-center", style: "margin: 0;" do %>
+      <h1 class="rainbow-text" style="margin: 0;">Sika Seeker</h1>
+    <% end %>
+
+    <div>
+      <i class="fa" style="font-size: 24px; margin-left: 16.99px">&#xf07a;</i>
+      <span class='badge badge-warning' id='lblCartCount'> 0 </span>
+    </div>
+  </div>
+
+  <!-- Offcanvas content -->
+  <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContentLabel" style="width: 40%;">
+    <div class="offcanvas-body">
+      <ul class="navbar-nav me-auto flex-column">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+          <li class="nav-item">
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fa fa-home" style="margin-right: 8px"></i>
+              Home
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fa-solid fa-list" style="margin-right: 10px"></i>
+              Menu
+            <% end %>
           </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" do %>
+              <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 10px"></i>
+              Log out
+            <% end %>
           </li>
         <% else %>
           <li class="nav-item">
@@ -34,9 +45,5 @@
         <% end %>
       </ul>
     </div>
-    <div>
-      <i class="fa" style="font-size:24px">&#xf07a;</i>
-      <span class='badge badge-warning' id='lblCartCount'> 0 </span>
-    </div>
   </div>
-</div>
+</nav>

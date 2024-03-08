@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :create ]
   def index
-    @orders = Order.all
+    @orders = Order.all.order(created_at: :desc)
   end
 
   def show
