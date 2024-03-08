@@ -1,4 +1,4 @@
-<%= form_with  method: :get, data: { action: "submit->spinning_wheel#spin" } do |f| %>
-  <%= f.range_field :price, data: { spinning_wheel_target: "filter"}, in: 0..100, value: 50, step: 10, class: "slider", oninput: "rangeValue.innerText = this.value" %>
-  <p class="text-center text-white">Price range: 0 - <span id="rangeValue">50</span></p>
+<%= form_with  method: :get, data: { action: "submit->spinning_wheel#spin" }, class: "slider" do |f| %>
+  <%= f.range_field :price, data: { spinning_wheel_target: "filter"}, in: 0..100, value: 45, step: 15, oninput: "rangeValue.innerText = this.value" %>
+  <p class="text-center text-white">Price range: 0 - <span id="rangeValue">45</span></p>
 <% end %>

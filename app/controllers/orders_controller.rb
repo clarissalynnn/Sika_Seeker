@@ -51,4 +51,13 @@ class OrdersController < ApplicationController
     end
   end
 
+  def track
+    @order = Order.find(params[:id])
+
+    @order_marker = {
+        lat: @order.latitude,
+        lng: @order.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {order: @order})
+    }.to_json
+  end
 end
