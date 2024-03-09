@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["container", "modal", "filter"];
+  static targets = ["container", "modal", "filter", "content"];
 
   connect() {
     this.number = Math.ceil(Math.random() * 1000);
@@ -32,27 +32,7 @@ export default class extends Controller {
           <h5>Rp${dish[2]}</h5>
         </div>`;
         });
-
-        this.modalTarget.innerHTML = `
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content p-3 rounded-3">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel"><strong> You're getting...</strong></h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row gx-2 gy-2">
-              ${filteredDishes.join("")}
-              </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-around">
-              <button type="button" class="btn btn-custom flex-grow-1 m-1" data-bs-dismiss="modal">Spin Again</button>
-              <button type="button" class="btn btn-custom flex-grow-1 m-1" id="go-to-menu-btn">Go to Menu</button>
-              <button type="button" class="btn btn-custom flex-grow-1 m-1">Check Out</button>
-            </div>
-          </div>
-        </div>
-      </div> `
+        this.contentTarget.innerHTML = filteredDishes.join("")
       });
 
     // rotating by a randomly generated degree
@@ -60,9 +40,8 @@ export default class extends Controller {
     this.number += Math.ceil(Math.random() * 1000)
 
     const spinDuration = 3500;
-
+    this.customModal = new bootstrap.Modal(this.modalTarget);
     setTimeout(() => {
-      this.customModal = new bootstrap.Modal(this.modalTarget);
       this.customModal.show();
     }, spinDuration);
   }
