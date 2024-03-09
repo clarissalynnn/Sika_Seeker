@@ -29,7 +29,7 @@ export default class extends Controller {
     this.quantityTarget.value = newQuantity;
     const totalPrice = 1 * parseInt(this.priceTarget.innerText);
     document.getElementById("total-price").innerText = totalPrice + parseInt(document.getElementById("total-price").innerText);
-    this.updateQuantity(this.orderIdValue, this.orderItemIdValue, document.getElementById("total-price").innerText);
+    this.updateQuantity(this.orderIdValue, this.orderItemIdValue, document.getElementById("total-price").innerText,1);
   }
 
   decrease() {
@@ -38,10 +38,11 @@ export default class extends Controller {
     this.quantityTarget.value = newQuantity;
     const totalPrice = 1 * parseInt(this.priceTarget.innerText);
     document.getElementById("total-price").innerText = parseInt(document.getElementById("total-price").innerText) - totalPrice;
+    this.updateQuantity(this.orderIdValue, this.orderItemIdValue, document.getElementById("total-price").innerText,-1);
   }
 
-  updateQuantity(orderId, orderItemId, totalPrice) {
-    const url = `/orders/${orderId}/update-quantity?order_item_id=${orderItemId}&total_price=${totalPrice}`;
+  updateQuantity(orderId, orderItemId, totalPrice, quantity) {
+    const url = `/orders/${orderId}/update-quantity?order_item_id=${orderItemId}&total_price=${totalPrice}&quantity=${quantity}`;
     fetch(url);
   }
 }

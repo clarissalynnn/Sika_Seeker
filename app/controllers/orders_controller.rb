@@ -36,12 +36,11 @@ class OrdersController < ApplicationController
   def update_quantity
     # binding.break
     order_item = OrderItem.find(params[:order_item_id])
-    order_item.quantity += 1
+    order_item.quantity += params[:quantity].to_i
     order_item.order.total_price = params[:total_price].to_f
     order_item.save
     order_item.order.save
   end
-
 
   def in_progress
     @order = Order.find(params[:id])
