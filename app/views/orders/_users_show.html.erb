@@ -1,12 +1,21 @@
 <% @order.order_items.each do |order_item| %>
   <div class="container">
-    <%= render "item_card", order_item: order_item %>
+      <%= render "item_card", order_item: order_item %>
   </div>
 <% end %>
 
-  <div>
-    <div>
-      <h6>Total: </h6>
-      <h6 id="total-price" data-quantity-target="totalprice"> 0 </h6>
+  <div class="container">
+    <div class="container">
+      <div class="card-container p-3">
+        <div class="total-details d-flex justify-content-end">
+          <h6><strong>Total: </strong> </h6>
+          <span> Rp </span>
+          <h6 id="total-price" data-quantity-target="totalprice">0</h6>
+        </div>
+        <%= form_with(model: @order, method: :patch) do |f| %>
+          <%= f.hidden_field :item_ids, data: { cart_number_target: 'items' } %>
+          <%= f.submit "Proceed to Checkout", class: "btn btn-info my-2 d-flex justify-content-end"%>
+        <% end %>
+      </div>
     </div>
   </div>
