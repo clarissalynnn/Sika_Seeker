@@ -11,7 +11,7 @@
       <div data-controller="search-menu">
         <%= form_with url: items_index_path, method: :get, html: {class: "mb-4", data: {search_menu_target: "form", action: "submit->search-menu#clear"}} do |f| %>
           <%= f.text_field :query,
-                           class: "form-control border-info",
+                           class: "form-control border-info border-2 shadow",
                            value: params[:query],
                            data: {
                              search_menu_target: "input",
@@ -28,11 +28,12 @@
   </div>
 </div>
 <div class="container" data-controller="cart-number">
-  <%= render "accordion" %>
+
+  <%= render "accordion", items: @rice_items %>
 </div>
 <div>
   <%= form_with(model: @order, method: :post) do |f| %>
     <%= f.hidden_field :item_ids, data: { cart_number_target: 'items' } %>
-    <%= f.submit "Next", class: "btn btn-info col-12 my-2"%>
+    <%= f.submit "Next", class: "btn btn-info col-12 my-2 menu-next-button"%>
   <% end %>
 </div>

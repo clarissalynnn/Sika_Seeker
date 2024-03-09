@@ -1,5 +1,10 @@
 .accordion-button {
 padding: 35px;
 font-size: 1.1rem;
-border: $yellow solid 1px;
+margin-bottom: 7px;
+box-shadow: $yellow 0px 3px 5px;
+}
+
+.accordion-button::after {
+  display: none;
 }
