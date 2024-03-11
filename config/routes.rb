@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # Routes for the spinning wheel
-  get 'items/index' => "items#index"
+  get 'pages/home', to: 'pages#home', as: 'home'
   get 'about', to: 'pages#about', as: 'about'
   get 'pages/wheel' => "pages#wheel"
   post 'pages/wheel' => "pages#wheel_api"
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 # Route for the loading page
   get 'loading', to: 'loading#show'
-  root to: "loading#show"
+  root to: "pages#home"
 
   # items routes
   get 'items/index', to: "items#index"
