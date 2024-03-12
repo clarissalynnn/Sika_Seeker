@@ -18,3 +18,11 @@
     vertical-align: top;
     margin-left: -10px;
 }
+
+.total-details {
+  span {
+    margin-left: 15px;
+    margin-right: 5px;
+    font-family: $headers-font;
+  }
+}
