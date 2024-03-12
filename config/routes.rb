@@ -39,7 +39,14 @@ Rails.application.routes.draw do
   # Update quantity
   get "orders/:id/update-quantity", to: 'orders#update_quantity', as: 'update_quantity'
 
+  
+  # Order Add Address page
+  get "/orders/:id/address", to: "orders#address", as: 'order_address'
+  # Order Update Address page
+  post "/orders/:id/update-address", to: "orders#update_address", as: 'update_address'
+
   # Order track page
   get "/orders/:id/track", to: "orders#track"
+
   # Defines the root path route ("/")
 end
