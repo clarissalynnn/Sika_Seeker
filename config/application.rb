@@ -14,14 +14,6 @@ module SikaSeeker
       generate.test_framework :test_unit, fixture: false
     end
 
-    # Add Cloudinary configuration
-    config.cloudinary = {
-      cloud_name: 'dmmjpsvni',
-      api_key: '148225255479839',
-      api_secret: 'rtzaXcXXmWxmPahxuSSa-VU8E20',
-      secure: true # Optional: Use HTTPS for secure connections
-    }
-
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
