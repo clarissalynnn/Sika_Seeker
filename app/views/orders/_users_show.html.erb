@@ -12,10 +12,7 @@
           <span> Rp </span>
           <h6 id="total-price" data-quantity-target="totalprice">0</h6>
         </div>
-        <%= form_with(model: @order, method: :patch) do |f| %>
-          <%= f.hidden_field :item_ids, data: { cart_number_target: 'items' } %>
-          <%= f.submit "Proceed to Checkout", class: "btn btn-info my-2 d-flex justify-content-end"%>
-        <% end %>
+        <%= link_to "Go to checkout", checkout_path(@order)  %>
       </div>
     </div>
   </div>

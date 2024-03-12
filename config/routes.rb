@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   post 'orders/:id/out_for_delivery', to: 'orders#out_for_delivery', as: 'out_for_delivery_order'
   post 'orders/:id/completed', to: 'orders#completed', as: 'completed_order'
   patch 'orders/:id/update', to: 'orders#update', as: 'update_order'
+  get 'order/:id/checkout', to: 'orders#checkout', as: 'checkout'
+  patch 'orders/:id/add_address', to: 'orders#add_address', as: 'add_address'
 
   # Update quantity
   get "orders/:id/update-quantity", to: 'orders#update_quantity', as: 'update_quantity'

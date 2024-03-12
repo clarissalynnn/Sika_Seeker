@@ -17,8 +17,7 @@ class OrdersController < ApplicationController
     order_date: Date.today,
     customer_id: current_user.id,
     driver_id: User.driver.first.id,
-    address: "Batu Bolong",
-    total_price: 100,
+    total_price: 0,
     status: "pending"
     )
 
@@ -40,6 +39,18 @@ class OrdersController < ApplicationController
     order_item.order.total_price = params[:total_price].to_f
     order_item.save
     order_item.order.save
+  end
+
+  def checkout
+    @order = Order.find(params[:id])
+  end
+
+  def add_address
+    @order = Order.find(params[:id])
+    raise
+    order = Order.update(
+      {address: }
+    )
   end
 
   def in_progress
