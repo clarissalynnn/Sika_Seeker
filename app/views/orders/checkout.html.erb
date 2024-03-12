@@ -1,19 +1,6 @@
 <h3> <strong>Checkout</strong> </h3>
-<div class="container">
-  <%= simple_form_for(@order) do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-    <div class="form-inputs">
-      <%= f.input :address,
-        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-      %>
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
-  <% end %>
-</div>
+<p><%= @order.total_price %></p>
+
 
 <div class="container">
   <div class="order-details">
@@ -21,5 +8,6 @@
     <h6> <strong>Total: </strong></h6>
     <span> <strong> <%= @order.total_price %> </strong> </span>
     <h6> <strong> Address: </strong> <%= @order.address %> </h6>
+
   </div>
 </div>
