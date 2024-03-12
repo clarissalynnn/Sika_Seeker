@@ -18,8 +18,7 @@ class OrdersController < ApplicationController
     order_date: Date.today,
     customer_id: current_user.id,
     driver_id: User.driver.first.id,
-    address: "Batu Bolong",
-    total_price: 100,
+    total_price: 0,
     status: "pending"
     )
 
@@ -34,6 +33,26 @@ class OrdersController < ApplicationController
     redirect_to order_path(order)
   end
 
+  def update_quantity
+    # binding.break
+    order_item = OrderItem.find(params[:order_item_id])
+    order_item.quantity += params[:quantity].to_i
+    order_item.order.total_price = params[:total_price].to_f
+    order_item.save
+    order_item.order.save
+  end
+
+  def checkout
+    @order = Order.find(params[:id])
+  end
+
+  def add_address
+    @order = Order.find(params[:id])
+    raise
+    order = Order.update(
+      {address: }
+    )
+  end
 
   def out_for_delivery
     @order = Order.find(params[:id])
@@ -54,7 +73,6 @@ class OrdersController < ApplicationController
 
   def track
     @order = Order.find(params[:id])
-
     @order_marker = {
         lat: @order.latitude,
         lng: @order.longitude,
