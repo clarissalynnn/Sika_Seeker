@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(User) && resource.is_driver?
       orders_path
     else
-      items_index_path
+      loading_path
     end
   end
 end

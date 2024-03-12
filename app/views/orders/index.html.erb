@@ -1,8 +1,5 @@
-  <div class="container">
-    <div class="container my-3">
-      <h1 style="text-align: center">Orders</h1>
-    </div>
-  </div>
-<% @orders.each do |order| %>
-  <%= render "card", order: order %>
+<% if current_user.is_driver? %>
+  <%= render "drivers_orders_index" %>
+    <% else %>
+  <%= render "users_orders_index" %>
 <% end %>

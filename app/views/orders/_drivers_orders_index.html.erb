@@ -1,0 +1,30 @@
+  <div class="container mt-5">
+    <div class="container my-3">
+      <h1 style="text-align: center">Driver | Orders</h1>
+    </div>
+  </div>
+<% @driver_orders.each do |order| %>
+  <%= link_to order_path(order), class: "link" do  %>
+    <div class="container py-2">
+      <div class="card-product">
+        <div class="flex-wrapper d-flex justify-content-center align-items-center">
+        <div class="card-product-infos">
+          <h2> Order #<%= order.id %>: <%= order.address %> </h2>
+          <p>$ <%= order.total_price %></p>
+          <p><%= order.order_date %></p>
+          </div>
+          <div class="pe-2">
+            <% if order.status == "pending" %>
+              <button class="btn btn-warning disabled text-end">In progress</button>
+            <% elsif order.status == "out_for_delivery" %>
+              <button class="btn btn-info disabled text-end">Out for delivery</button>
+            <% else %>
+              <button class="btn btn-success disabled text-end">Completed</button>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

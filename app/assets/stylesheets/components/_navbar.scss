@@ -3,10 +3,16 @@ $header-font: "Niconne", "Helvetica", sans-serif;
 .navbar-brand h1 {
   font-size: 40px;
   font-family: $header-font;
-  background: linear-gradient(to right, #FF037D, #F4964A, #DF0102);
+  background: white;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: rainbowText 5s linear infinite alternate forwards;
 }
 
+.drop-menu-link {
+  color: white;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  font-size: 24px;
+}

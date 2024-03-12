@@ -3,16 +3,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px;
-    padding-top: 60px;
+    padding: 0 15px 10px 15px;
   }
 
   .login-form {
-    width: 100%; /* Ensure the form takes full width */
-  }
+    width: 100%;
 
   .form-inputs {
-    width: 100%; /* Set form inputs to fill the container width */
+    width: 100%;
     margin-bottom: 10px;
   }
 
@@ -24,7 +22,7 @@
 </style>
 
 
-<div class="login-container">
+<div class="login-container container-top-margin">
   <h2>Log in</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form' }) do |f| %>

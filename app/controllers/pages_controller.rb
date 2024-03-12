@@ -10,6 +10,9 @@ class PagesController < ApplicationController
     filter
   end
 
+  def about
+  end
+
   private
 
   def filter

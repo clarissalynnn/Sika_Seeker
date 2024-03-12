@@ -1,11 +1,12 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Niconne&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&family=Karla:ital,wght@0,200..800;1,200..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 // Define fonts for body and headers
 // $body-font: "Work Sans", "Helvetica", "sans-serif";
 $body-font: "Nunito", "Helvetica", "sans-serif";
-$headers-font: "Niconne", "Helvetica", "sans-serif";
+$headers-font: "Libre Baskerville", "serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

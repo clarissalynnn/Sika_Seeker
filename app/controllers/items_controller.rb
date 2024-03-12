@@ -1,7 +1,19 @@
 class ItemsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index ]
+  # skip_before_action :authenticate_user!, only: [:index ]
 
   def index
+
+    @items = Item.all
+
+    if params[:query].present?
+      @items = @items.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "items/list", locals: {items: @items}, formats: [:html] }
+    end
+
     @rice_items = Item.all.select do |item|
       item.category == "rice"
     end
