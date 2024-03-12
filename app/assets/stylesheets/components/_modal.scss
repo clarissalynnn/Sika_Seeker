@@ -14,3 +14,14 @@
 .border-custom{
   border-color: $yellow !important;
 }
+
+.btn-custom.disabled {
+  background-color: $yellow;
+  color: white;
+}
+
+.btn-custom-outline{
+  background-color: white;
+  border: 2px solid $yellow;
+  color: $yellow;
+}

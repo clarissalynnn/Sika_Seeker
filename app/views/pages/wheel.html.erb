@@ -34,9 +34,11 @@
               </div>
             </div>
             <div class="modal-footer d-flex justify-content-around">
-              <button type="button" class="btn btn-custom flex-grow-1 m-1" data-bs-dismiss="modal">Spin Again</button>
-              <%= link_to items_index_path, class: "btn btn-custom flex-grow-1 m-1" do %>Menu<% end %>
-              <button type="button" class="btn btn-custom flex-grow-1 m-1">Check Out</button>
+              <button type="button" class="btn btn-custom flex-grow-1 mt-0" data-bs-dismiss="modal">Spin Again</button>
+              <%= link_to "Checkout", home_path,
+                  class: "btn btn-custom-outline w-100"
+              %>
+
             </div>
           </div>
         </div>

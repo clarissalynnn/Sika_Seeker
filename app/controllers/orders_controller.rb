@@ -34,17 +34,9 @@ class OrdersController < ApplicationController
   end
 
 
-  def in_progress
-    @order = Order.find(params[:id])
-    if @order.update(status: 'in_progress')
-      flash[:notice] = "Order in progress"
-      redirect_to orders_path
-    end
-  end
-
   def out_for_delivery
     @order = Order.find(params[:id])
-    if @order.update(status: 'out_for_delivery')
+    if @order.update(status: "out_for_delivery")
       flash[:alert] = "Order out for delivery"
       redirect_to orders_path
     end
@@ -52,7 +44,7 @@ class OrdersController < ApplicationController
 
   def completed
     @order = Order.find(params[:id])
-    if @order.update(status: 'completed')
+    if @order.update(status: "completed")
       flash[:alert] = "Order completed "
       redirect_to orders_path
     end
