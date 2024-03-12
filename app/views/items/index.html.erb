@@ -27,13 +27,4 @@
     </div>
   </div>
 </div>
-<div class="container" data-controller="cart-number">
-
-  <%= render "accordion", items: @rice_items %>
-</div>
-<div>
-  <%= form_with(model: @order, method: :post) do |f| %>
-    <%= f.hidden_field :item_ids, data: { cart_number_target: 'items' } %>
-    <%= f.submit "Next", class: "btn btn-info col-12 my-2 menu-next-button"%>
-  <% end %>
 </div>

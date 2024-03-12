@@ -16,37 +16,40 @@
   </div>
 
   <!-- Offcanvas content -->
-  <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContentLabel" style="width: 40%;">
+  <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContentLabel" style="width: 85%;">
     <div class="offcanvas-body">
       <ul class="navbar-nav me-auto flex-column">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to pages_wheel_path, class: "nav-link" do %>
-              <i class="fa fa-home" style="margin-right: 8px"></i>
+            <%= link_to pages_wheel_path, class: "nav-link drop-menu-link" do %>
+              <i class="fa fa-home fa-xl" style="margin-top: 30px; margin-right: 8px"></i>
               Home
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to items_index_path, class: "nav-link" do %>
-              <i class="fa-solid fa-list" style="margin-right: 10px"></i>
+            <%= link_to items_index_path, class: "nav-link drop-menu-link" do %>
+              <i class="fa-solid fa-utensils fa-xl" style="margin-left: 5px; margin-right: 14px"></i>
               Menu
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to about_path, class: "nav-link" do %>
-              <i class="fa-solid fa-info-circle" style="margin-right: 10px"></i>
+            <%= link_to about_path, class: "nav-link drop-menu-link" do %>
+              <i class="fa-solid fa-info-circle fa-xl" style="margin-left: 3px; margin-right: 12px"></i>
               About
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" do %>
-              <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 10px"></i>
+            <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link drop-menu-link" do %>
+              <i class="fa-solid fa-arrow-right-from-bracket fa-xl" style="margin-left: 3px; margin-right: 10px"></i>
               Log out
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to new_user_session_path, class: "nav-link drop-menu-link" do %>
+              <i class="fa-solid fa-right-to-bracket fa-xl" style="margin-left: 3px; margin-right: 10px"></i>
+              Log in
+            <% end %>
           </li>
         <% end %>
       </ul>
