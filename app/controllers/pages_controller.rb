@@ -17,23 +17,37 @@ class PagesController < ApplicationController
 
   def filter
     @filter_price = params[:price].to_i
-    @all_meals = Item.all.to_a
     @random_dishes = []
+    suitable_dishes = []
 
-    if @filter_price.present?
-      total_price = 0
-      # random reorder  @all_meals
-      @all_meals.shuffle.each do |dish|
-        # skips and looks for dishes > @filter_price
-        next if total_price + dish.price > @filter_price
-        total_price += dish.price
-        @random_dishes << [dish.name, ActionController::Base.helpers.asset_url(dish.photo), dish.price]
-        break if @random_dishes.length >= 4
+
+    categories = Item.pluck(:category).uniq
+
+    while @filter_price > 0 do
+      break unless Item.all.any? { |item| item.price <= @filter_price && @random_dishes.none? {|random_dish| random_dish.first == item.name } }
+
+      categories.each do |category|
+        items = Item.where(category: category)
+
+        suitable_items = items.select do |item|
+          if @random_dishes.any? {|random_dish| random_dish.first == item.name}
+            false
+          else
+            item.price <= @filter_price
+          end
+        end
+
+        # Randomly pick a suitable dish from this category
+        if suitable_items.any?
+          @random_item = suitable_items.sample
+          @random_dishes << [@random_item.name, ActionController::Base.helpers.asset_url(@random_item.photo), @random_item.price]
+          @filter_price -= @random_item.price  # Deduct price from @filtered_price
+
+          # break loop when @filtered_price <= zero
+          break if @filter_price <= 0
+        end
       end
-    else
-      @random_dishes = @all_meals.sample(4).pluck(:name, :photo, :price)
     end
+    @random_dishes
   end
-
-
 end
