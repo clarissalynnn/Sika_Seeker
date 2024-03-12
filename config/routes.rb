@@ -33,20 +33,18 @@ Rails.application.routes.draw do
   post 'orders/:id/out_for_delivery', to: 'orders#out_for_delivery', as: 'out_for_delivery_order'
   post 'orders/:id/completed', to: 'orders#completed', as: 'completed_order'
   patch 'orders/:id/update', to: 'orders#update', as: 'update_order'
-  get 'order/:id/checkout', to: 'orders#checkout', as: 'checkout'
-  patch 'orders/:id/add_address', to: 'orders#add_address', as: 'add_address'
+  get 'orders/:id/checkout', to: 'orders#checkout', as: 'checkout'
 
   # Update quantity
   get "orders/:id/update-quantity", to: 'orders#update_quantity', as: 'update_quantity'
 
-  
   # Order Add Address page
-  get "/orders/:id/address", to: "orders#address", as: 'order_address'
+  # get "/orders/:id/address", to: "orders#address", as: 'order_address'
   # Order Update Address page
   post "/orders/:id/update-address", to: "orders#update_address", as: 'update_address'
 
   # Order track page
-  get "/orders/:id/track", to: "orders#track"
+  get "/orders/:id/track", to: "orders#track", as: 'track_order'
 
   # Defines the root path route ("/")
 end

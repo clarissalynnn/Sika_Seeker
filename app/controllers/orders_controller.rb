@@ -45,12 +45,13 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def add_address
-    @order = Order.find(params[:id])
-    raise
-    order = Order.update(
-      {address: }
-    )
+  def update_address
+    # raise
+    order = Order.find(params[:id])
+    order.update(address: params[:order][:address], longitude: params[:order][:longitude].to_f,
+                 latitude: params[:order][:latitude].to_f)
+
+    redirect_to track_order_path(order)
   end
 
   def in_progress
@@ -77,7 +78,6 @@ class OrdersController < ApplicationController
     end
   end
 
-
   def track
     @order = Order.find(params[:id])
     @order_marker = {
@@ -85,18 +85,5 @@ class OrdersController < ApplicationController
         lng: @order.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {order: @order})
     }.to_json
-  end
-
-  def address
-    @order = Order.find(params[:id])
-  end
-
-  def update_address
-    # raise
-    order = Order.find(params[:id])
-    order.update(address: params[:order][:address], longitude: params[:order][:longitude].to_f,
-                 latitude: params[:order][:latitude].to_f)
-
-    redirect_to track_order_path(order)
   end
 end
