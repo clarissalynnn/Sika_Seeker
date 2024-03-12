@@ -28,6 +28,13 @@ class OrdersController < ApplicationController
         quantity: 1
       )
     end
+
+    order = Order.find(order.id)
+    total_price = 0
+    order.order_items.each do |order_item|
+      total_price += order_item.item.price * order_item.quantity
+    end
+    order.update(total_price: total_price)
     # redirect_to orders_path
     redirect_to order_path(order)
   end
