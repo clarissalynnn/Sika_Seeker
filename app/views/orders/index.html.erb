@@ -1,6 +1,5 @@
-
-  <% if current_user.is_driver? %>
-    <%= render "drivers_orders_index" %>
-  <% else %>
-    <%= render "users_orders_index" %>
-  <% end %>
+<% if current_user.is_driver? %>
+  <%= render "drivers_orders_index" %>
+    <% else %>
+  <%= render "users_orders_index" %>
+<% end %>
