@@ -1,12 +1,11 @@
 import { Controller } from "@hotwired/stimulus";
 
-import driving_steps from "./driving_steps.json" assert { type: "json" };
-
 // Connects to data-controller="track-map"
 export default class extends Controller {
   static values = {
     apiKey: String,
     orderMarker: Object,
+    isDriver: Boolean
   };
 
   connect() {
@@ -135,9 +134,6 @@ export default class extends Controller {
       .then((data) => {
         console.log(data);
         this.displayDrivingDirections(data.routes[0].legs[0].steps);
-        // this.displayDrivingDirections(driving_steps);
-
-        // let coordinates = data.geometry.coordinates;
         let coordinates = data.routes[0].geometry.coordinates;
         // console.log(coordinates);
         const len = coordinates.length;

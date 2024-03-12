@@ -1,65 +1,73 @@
 <div class="container p-2">
   <h1 class="tracking-title">Sika Seeker order  #<%= @order.id %> : <%= @order.status %> ⏳</h1>
-    <div style="width: 100%; height: 400px;"
-      data-controller="track-map"
-      data-track-map-order-marker-value="<%= @order_marker %>"
-      data-track-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+  <div style="width: 100%; height: 400px;"
+    data-controller="track-map"
+    data-track-map-order-marker-value="<%= @order_marker %>"
+    data-track-is-driver-value="<%= current_user.is_driver? %>"
+    data-track-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 
-    <div class="card p-2 mt-1">
-      <span>*Customer section</span>
-      <div id="time"></div>
-      <div id="test1"></div>
+  <div class="<%= 'd-none' if current_user.is_driver? %>">
+      <div class="card p-2 mt-1">
+        <span>*Customer section</span>
+        <div id="time"></div>
+        <div id="test1"></div>
 
-    <table class="table-borderless">
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td> Order processing</td>
-          <td><%= @order.created_at %></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td> Restaurant confirmed</td>
-          <td><%= @order.order_date %> <span id="steps-time"></span></td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td> Courier confirmed</td>
-          <td><%= @order.order_date %> /time</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td> Food in transit</td>
-          <td><%= @order.order_date %> /time</td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>☑️ Delivery complete</td>
-          <td><%= @order.order_date %> /time</td>
-        </tr>
+        <table class="table-borderless">
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td> Order processing</td>
+              <td><%= @order.created_at %></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td> Restaurant confirmed</td>
+              <td><%= @order.order_date %> <span id="steps-time"></span></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td> Courier confirmed</td>
+              <td><%= @order.order_date %> /time</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td> Food in transit</td>
+              <td><%= @order.order_date %> /time</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>☑️ Delivery complete</td>
+              <td><%= @order.order_date %> /time</td>
+            </tr>
 
-      </tbody>
-    </table>
-          <h5 class="info p-3"><i class="fa-solid fa-circle-info"></i> If you selected 'Cash' as your payment method, you can sill pay the courier via ...</h5>
-      <div class="track-btn">
-    <div class="row 2">
+          </tbody>
+        </table>
+              <h5 class="info p-3"><i class="fa-solid fa-circle-info"></i> If you selected 'Cash' as your payment method, you can sill pay the courier via ...</h5>
+        <div class="track-btn">
+          <div class="row 2">
             <div class="col md-6"><button class="btn1 p-2"><%= link_to "Browse Home", items_index_path %></button></div>
             <div class="col md-6"><button class="btn2 p-2"><%= link_to "Order again" %></button></div>
+          </div>
         </div>
-    </div>
-      <div class="card-feedback m-4 p-4">
-        <div class="row 2">
-            <div class="col"><a href="tel:?"><i class="fa-solid fa-phone" style="color: grey;"></i></a>  Contact Restaurant</div>
-            <div class="col"><a href="mailto:your@email.com?subject=Contact Request from Sika Seeker"><i class="fa-solid fa-message" style="color: grey;"></i></a> Order Feedback</div>
+        <div class="card-feedback m-4 p-4">
+          <div class="row 2">
+              <div class="col"><a href="tel:?"><i class="fa-solid fa-phone" style="color: grey;"></i></a>  Contact Restaurant</div>
+              <div class="col"><a href="mailto:your@email.com?subject=Contact Request from Sika Seeker"><i class="fa-solid fa-message" style="color: grey;"></i></a> Order Feedback</div>
+          </div>
         </div>
+
       </div>
-       <hr>
-        <span>*Driver section</span>
-          <div id="directions"></div>
-          <div id="instructions"></div>
-        <h2>📍 <%= @order.address %></h2>
     </div>
+
+
+    <div class="<%= 'd-none' if !current_user.is_driver? %>">
+      <span>Driving instructions</span>
+      <div id="directions"></div>
+      <div id="instructions"></div>
+      <h2>📍 <%= @order.address %></h2>
+    </div>
+
     <div class="btn"><%= link_to "Home", orders_path %></div>
 
 </div>
