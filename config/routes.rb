@@ -29,6 +29,5 @@ Rails.application.routes.draw do
 
   # Order track page
   get "/orders/:id/track", to: "orders#track"
-
   # Defines the root path route ("/")
 end

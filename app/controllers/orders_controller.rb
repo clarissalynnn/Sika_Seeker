@@ -29,7 +29,6 @@ class OrdersController < ApplicationController
 
   def track
     @order = Order.find(params[:id])
-
     @order_marker = {
         lat: @order.latitude,
         lng: @order.longitude,

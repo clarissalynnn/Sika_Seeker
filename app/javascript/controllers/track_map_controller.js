@@ -50,8 +50,44 @@ export default class extends Controller {
     instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
     steps[0].distance / 60
     )} min 🛵 </strong></p><ol>${tripInstructions}</ol>`;
+    const time = document.getElementById("steps-time");
+    time.innerHTML = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
 
+    // array index
+    // const YEARS = 0
+    // const MONTHS = 1
+    const DAYS = 2
+    const HOURS = 3
+    const MINUTES = 4
+    // test time interval
+    function addInterval(date, interval) {
+      const parts = [
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+        date.getMilliseconds()
+      ]
+      // fetch keys/values
+      for (const [unit, value] of Object.entries(interval)) {
+          parts[unit] += value
+      }
+
+      return new Date(...parts)
+    }
+    const now = new Date();
+    const future = addInterval(now, {
+      [HOURS]: 0,
+      [MINUTES]: 10
+
+    })
+    console.log(now)
+    console.log(future)
   }
+
+
 
   #addMarkersToMap() {
     // Order Marker
