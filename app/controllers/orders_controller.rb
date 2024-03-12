@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     order = Order.create(
     order_date: Date.today,
     customer_id: current_user.id,
-    driver_id: User.drivers.first.id,
+    driver_id: User.driver.first.id,
     address: "Batu Bolong",
     total_price: 100,
     status: "pending"
