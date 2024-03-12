@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
     @orders = Order.all.order(created_at: :desc)
     @driver = current_user
     @driver_orders = Order.where(driver_id: @driver.id)
+
   end
 
   def show
