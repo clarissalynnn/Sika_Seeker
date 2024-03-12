@@ -47,4 +47,6 @@ Rails.application.routes.draw do
   get "/orders/:id/track", to: "orders#track", as: 'track_order'
 
   # Defines the root path route ("/")
+
+  # Delete order item from the cart
 end
