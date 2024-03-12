@@ -10,16 +10,15 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-
   def create
     # binding.break
     order = Order.create(
-    order_date: Date.today,
-    customer_id: current_user.id,
-    driver_id: User.drivers.first.id,
-    address: "Batu Bolong",
-    total_price: 100,
-    status: "pending"
+      order_date: Date.today,
+      customer_id: current_user.id,
+      driver_id: User.driver.first.id,
+      address: "Batu Bolong",
+      total_price: 100,
+      status: "pending"
     )
 
     params[:order][:item_ids].split(",").each do |item|
@@ -32,7 +31,6 @@ class OrdersController < ApplicationController
     # redirect_to orders_path
     redirect_to order_path(order)
   end
-
 
   def in_progress
     @order = Order.find(params[:id])
@@ -58,14 +56,13 @@ class OrdersController < ApplicationController
     end
   end
 
-
   def track
     @order = Order.find(params[:id])
 
     @order_marker = {
-        lat: @order.latitude,
-        lng: @order.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {order: @order})
+      lat: @order.latitude,
+      lng: @order.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {order: @order})
     }.to_json
   end
 end
