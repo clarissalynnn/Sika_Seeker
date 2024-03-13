@@ -7,6 +7,7 @@
 // }
 
 .entry {
+  border: 0.5px $yellow;
   border-radius: 4px;
   padding: 10px;
   text-align: center;
@@ -48,8 +49,12 @@
 }
 
 .pages-title {
+  margin-top: 30px;
   margin-bottom: 30px;
   text-align: center;
+  .h3 {
+    font-weight: 700;
+  }
 }
 
 // Styling for order_items
@@ -93,4 +98,10 @@
 
 .accordion-button:not(.collapsed) {
   background-color: $yellow;
+}
+
+.price-label {
+  .h6 {
+    display: inline;
+  }
 }

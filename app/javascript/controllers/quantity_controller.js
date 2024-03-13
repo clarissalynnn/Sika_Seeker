@@ -22,6 +22,7 @@ export default class extends Controller {
     if (cartLabel) {
       cartLabel.remove();
     }
+    console.log(this.element);
   }
 
   increase() {
@@ -45,6 +46,9 @@ export default class extends Controller {
   decrease() {
     console.log("decrease clicked");
     const newQuantity = parseInt(this.quantityTarget.value || 0) - 1;
+    if (newQuantity == 0) {
+      this.element.remove();
+    }
     this.quantityTarget.value = newQuantity;
     const totalPrice = parseInt(this.priceTarget.innerText);
     const currentTotalPrice = parseInt(
