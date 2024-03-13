@@ -11,17 +11,18 @@
       <div class="card p-2 mt-1">
 
         <div class="badge-track p-2">
-              <div><span class="badge m-2 rounded-pill text-bg-secondary text-end">Order sent to the restaurant at  <%= @order.created_at.strftime("%r") %></span></div>
+              <div><span class="badge  rounded-pill text-bg-secondary text-end">Order sent to the restaurant at  <%= @order.created_at.strftime("%r") %></span></div>
                  <% if @order.status == "pending" %>
-              <div><span class="badge m-2 rounded-pill bg-secondary text-end">Waiting for restaurant confirmation <%= Time.now.strftime("%r") %></span></div>
-              <div class="interval" id="interval"></div>
+              <div><span class="badge  rounded-pill bg-secondary text-end">Waiting for restaurant confirmation <%= Time.now.strftime("%r") %></span></div>
+                <div class="interval" id="interval"></div>
                    <% elsif @order.status == "in_progress" %>
-              <div><span class="badge m-2 rounded-pill bg-secondary text-end"> Order processing <%= Time.now.strftime("%r") %> </span></div>
+              <div><span class="badge  rounded-pill bg-secondary text-end">Order confirmed <%= Time.now.strftime("%r") %> </span></div>
+                <div class="interval" id="interval"></div>
                    <% elsif @order.status == "out_for_delivery" %>
-              <div class="interval" id="interval"></div>
-              <div><span class="badge m-2 rounded-pill bg-secondary text-end"> Out for delivery <%= Time.now.strftime("%r") %> </span></div>
+                <div class="interval" id="interval"></div>
+              <div><span class="badge  rounded-pill bg-secondary text-end"> Out for delivery <%= Time.now.strftime("%r") %> </span></div>
                    <% elsif  @order.status == "completed" %>
-              <div><span class="badge m-2 rounded-pill text-bg-success text-end">Delivery completed at <%= Time.now.strftime("%r") %></span></div>
+              <div><span class="badge  rounded-pill text-bg-success text-end">Delivery completed at <%= Time.now.strftime("%r") %></span></div>
                  <% end %>
         </div>
            <hr>
@@ -41,7 +42,7 @@
 
       </div>
     </div>
-    <div class="<%= 'd-none' if !current_user.is_driver? %>">
+     <div class="<%= 'd-none' if !current_user.is_driver? %>">
         <div class="card-instructions p-2 m-3">
             <p class="driver-direction">Instructions to your destination</p>
             <div id="time"></div>
@@ -49,6 +50,6 @@
             <div class="driver-instructions" id="instructions"></div>
             <h2>📍 <%= @order.address %></h2>
        </div>
+        <button class="btn3 m-2 p-2"><%= link_to "Browse orders", orders_path %></button>
     </div>
-    <div class="btn3 m-2"><%= link_to "Home", orders_path %></div>
 </div>
