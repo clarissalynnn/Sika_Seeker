@@ -49,4 +49,6 @@ Rails.application.routes.draw do
 
   # Payment routes
   get '/payment', to: 'payments#new', as: 'payment_form'
+  get '/payment/success', to: 'payments#success', as: 'success_payment'
+  get '/payment/cancel', to: 'payments#cancel', as: 'cancel_payment'
 end

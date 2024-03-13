@@ -1,13 +1,32 @@
 <%= form_tag '/payment', id: 'payment-form' do %>
-  <div class="form-row">
-    <label for="card-element">
-      Credit or debit card
-    </label>
-    <div id="card-element">
-      <!-- A Stripe Element will be inserted here. -->
-    </div>
-    <!-- Used to display form errors. -->
-    <div id="card-errors" role="alert"></div>
+  <div>
+    <p>Total Amount: <%= number_to_currency(@order_total) %></p>
   </div>
   <button id="submit-payment" class="btn btn-outline-info">Submit Payment</button>
 <% end %>
+
+<!-- Include Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<!-- Your Stripe.js code -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
+
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Redirect to Stripe Checkout
+      stripe.redirectToCheckout({
+        sessionId: '<%= @checkout_session_id %>'
+      }).then(function (result) {
+        // Handle any errors that occur during redirection
+        if (result.error) {
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+        }
+      });
+    });
+  });
+</script>

@@ -1,41 +1,42 @@
 <div class="container text-center mt-5 mb-5">
-  <h3> <strong>Checkout</strong> </h3>
+  <h3><strong>Checkout</strong></h3>
 </div>
 
-<%= simple_form_for :order, url: update_address_path(id: @order.id) do |f| %>
-
 <div class="container mb-5">
-  <div class="form-inputs">
-    <%= f.input :address,
-      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-    %>
-    <%= f.input :longitude, as: :hidden %>
-    <%= f.input :latitude, as: :hidden %>
-  </div>
-
   <div class="your-order-container text-center">
     <div class="order-details">
-      <h4 class="title"> <strong>Order #</strong> <%= @order.id %></h4>
+      <h4 class="title"><strong>Order #</strong> <%= @order.id %></h4>
       <div class="row">
         <div class="col-8">
-          <h6> <strong>Number of items: </strong></h6>
+          <h6><strong>Number of items:</strong></h6>
         </div>
         <h6 class="col-4 text-right">
           <% @order.order_items.each do |order_item| %>
-          <%= order_item.quantity %>
+            <%= order_item.quantity %>
           <% end %>
         </h6>
       </div>
       <div class="row">
-        <h6 class="total col-8"> <strong>Total: </strong></h6>
-        <h6 class="col-4 text-left"> <%= @order.total_price %> </h6>
+        <h6 class="total col-8"><strong>Total:</strong></h6>
+        <h6 class="col-4 text-left"><%= @order.total_price %></h6>
       </div>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Confirm Order", class: 'btn btn-custom w-100 mt-2' %>
+    <button id="proceed-to-payment" class="btn btn-custom w-100 mt-2">Proceed to Payment</button>
   </div>
-  <% end %>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const proceedToPaymentButton = document.getElementById('proceed-to-payment');
+
+    proceedToPaymentButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      const orderId = <%= @order.id %>;
+      const totalPrice = <%= @order.total_price %>;
+      window.location.href = '/payment?order_id=' + orderId + '&total_price=' + totalPrice;
+    });
+  });
+</script>

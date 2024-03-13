@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
       redirect_to orders_path
     end
   end
-
+  
   def update_quantity
     # binding.break
     order_item = OrderItem.find(params[:order_item_id])
