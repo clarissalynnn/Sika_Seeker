@@ -6,11 +6,11 @@
         </button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
+        <div class="accordion-body p-0">
           <div class="row">
             <% @rice_items.each do |item| %>
               <div class="col-6">
-                <div class="entry border border-info">
+                <div class="entry border border-info my-2">
                   <%= image_tag item.photo, alt: "text" %>
                   <h6><%= item.name %></h6>
                   <div class="price">
@@ -33,11 +33,11 @@
         </button>
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
+        <div class="accordion-body p-0">
           <div class="row">
             <% @animal_items.each do |item| %>
               <div class="col-6">
-                <div class="entry border border-info">
+                <div class="entry border border-info my-2">
                   <%= image_tag item.photo, alt: "text" %>
                   <h6><%= item.name %></h6>
                   <div class="price">
@@ -60,11 +60,11 @@
         </button>
       </h2>
       <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
+        <div class="accordion-body p-0">
           <div class="row" >
             <% @plant_items.each do |item| %>
               <div class="col-6">
-                <div class="entry border border-info">
+                <div class="entry border border-info my-2">
                   <%= image_tag item.photo, alt: "text" %>
                   <h6><%= item.name %></h6>
                   <div class="price">
@@ -87,11 +87,11 @@
         </button>
       </h2>
       <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
+        <div class="accordion-body p-0">
           <div class="row">
             <% @veg_items.each do |item| %>
               <div class="col-6">
-                <div class="entry border border-info">
+                <div class="entry border border-info my-2">
                   <%= image_tag item.photo, alt: "text" %>
                   <h6><%= item.name %></h6>
                   <div class="price">

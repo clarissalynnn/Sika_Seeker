@@ -10,3 +10,22 @@
       </button>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card-product border border-info shadow-none">
+      <%= image_tag item.photo, alt: "text" %>
+      <div class="card-product-infos">
+        <h6><%= item.name%></h6>
+        <div class="price">
+          <h5>Rp <%= item.price %></h5>
+        </div>
+        <div class="">
+          <button type="button" class="btn btn-info rounded-circle" data-cart-number-target='addButton' data-action='click->cart-number#addToCart'
+            data-item-id="<%= item.id %>"> <i class="bi bi-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
