@@ -38,22 +38,19 @@ export default class extends Controller {
 
   displayDrivingDirections(steps) {
     const drivingDiv = document.getElementById("directions");
-
-    drivingDiv.innerHTML = `<p><strong>Distance to destination: ${Math.floor(steps[0].distance)}m</strong></p>`;
+    drivingDiv.innerHTML = `<p>Distance to destination: <strong>${Math.floor(steps[1].distance)}m</strong></p>`;
     const timeDiv = document.getElementById("time");
-    timeDiv.innerHTML = `<p><strong>Estimated delivery in : ${Math.floor(steps[0].duration)}min  🍜</strong></p>`;
+    timeDiv.innerHTML = `<p>Order preparation: <strong>${Math.floor(steps[0].duration)}min</strong></p><p>Trip duration: <strong>${Math.floor(
+      steps[1].distance / 60
+      )} min 🛵 </strong></p>`;
     // get the sidebar and add the instructions
     const instructions = document.getElementById('instructions');
 
     let tripInstructions = '';
-    for (const step of steps) {
-    tripInstructions += `<li>${step.maneuver.instruction}</li>`;
-    }
-    instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
-    steps[0].distance / 60
-    )} min 🛵 </strong></p><ol>${tripInstructions}</ol>`;
-    const time = document.getElementById("steps-time");
-    time.innerHTML = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+      for (const step of steps) {
+      tripInstructions += `<li>In <strong>${Math.floor(step.maneuver.bearing_after)}m </strong> ${step.maneuver.instruction}</li>`;
+      }
+      instructions.innerHTML = `<ol>${tripInstructions}</ol>`;
 
     // array index
     // const YEARS = 0
@@ -80,16 +77,21 @@ export default class extends Controller {
       return new Date(...parts)
     }
     const now = new Date();
-    const future = addInterval(now, {
+    let future = addInterval(now, {
       [HOURS]: 0,
-      [MINUTES]: 10
-
+      [MINUTES]: 30
     })
     console.log(now)
     console.log(future)
+
+    const intervalDiv = document.getElementById("interval");
+    if (intervalDiv) {
+      const formatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const formattedTime = formatter.format(future);
+      intervalDiv.innerHTML = `<p>*Estimated delivery time at <strong> ${formattedTime} </strong></p>`;
+    }
+
   }
-
-
 
   #addMarkersToMap() {
     // Order Marker
@@ -116,10 +118,6 @@ export default class extends Controller {
     const bounds = new mapboxgl.LngLatBounds();
     bounds.extend([this.orderMarkerValue.lng, this.orderMarkerValue.lat]);
     bounds.extend([115.1295623, -8.6508524]); // Extend bounds to Warung Sika as well
-
-    // this.markersValue.forEach((marker) =>
-    //   bounds.extend([marker.lng, marker.lat])
-    // );
 
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
   }
