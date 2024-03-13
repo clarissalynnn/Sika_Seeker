@@ -22,15 +22,16 @@
         <div class="show-btns d-flex flex-column justify-content-center mt-1 w-60">
           <p class="text-center">Please update order status</p>
           <%= link_to "Order out for delivery", out_for_delivery_order_path(@order),
-            class: "btn btn-custom me-3 w-100 mb-2 #{"disabled" if @order.status == 'out_for_delivery' || @order.status == "completed"}",
+            class: "btn btn-custom w-100 mb-2 #{"disabled" if @order.status == 'out_for_delivery' || @order.status == "completed"}",
             data: {turbo_method: :post, turbo_confirm: "Update order as out for delivery?"}%>
           <%= link_to "Order completed", completed_order_path(@order),
             class: "btn btn-custom w-100 #{"disabled" if @order.status == "completed"}",
             data: { turbo_method: :post, turbo_confirm: "Update order as completed?" }
           %>
+          <%= link_to "See delivery route", track_order_path(@order),
+            class: "btn btn-custom-outline w-100 mt-2"
+          %>
         </div>
       </div>
     </div>
 </div>
-<h1 class="text-center mt-4">Map</h1>
-<%# Here goes map with routes direction %>

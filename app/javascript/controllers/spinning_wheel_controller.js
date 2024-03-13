@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["container", "modal", "filter", "content"];
+  static targets = ["container", "modal", "filter", "content", "items"];
 
   connect() {
     this.number = Math.ceil(Math.random() * 1000);
@@ -23,13 +23,13 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         console.log(data);
-
+        this.itemsTarget.value = data.random_dishes.map((item) => item[3]).join(',')
         const filteredDishes = data.random_dishes.map(dish => {
           return `<div class="col-6 col-sm-4 text-center">
           <div class="rounded-4 d-flex justify-content-center align-items-center border border-custom border-3" style="background: url('${dish[1]}') no-repeat center center; background-size: cover; width: 100%; padding-top: 100%;">
           </div>
           <h5 class="pt-2">${dish[0]}</h5>
-          <h5>Rp${dish[2]}</h5>
+          <h5><span>$</span>${dish[2]}</h5>
         </div>`;
         });
         this.contentTarget.innerHTML = filteredDishes.join("")
