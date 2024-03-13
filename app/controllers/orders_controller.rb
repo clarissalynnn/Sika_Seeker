@@ -29,6 +29,13 @@ class OrdersController < ApplicationController
         quantity: 1
       )
     end
+
+    order = Order.find(order.id)
+    total_price = 0
+    order.order_items.each do |order_item|
+      total_price += order_item.item.price * order_item.quantity
+    end
+    order.update(total_price: total_price)
     # redirect_to orders_path
     redirect_to order_path(order)
   end
@@ -46,12 +53,13 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def add_address
-    @order = Order.find(params[:id])
-    raise
-    order = Order.update(
-      {address: }
-    )
+  def update_address
+    # raise
+    order = Order.find(params[:id])
+    order.update(address: params[:order][:address], longitude: params[:order][:longitude].to_f,
+                 latitude: params[:order][:latitude].to_f)
+
+    redirect_to track_order_path(order)
   end
 
   def out_for_delivery
@@ -69,7 +77,6 @@ class OrdersController < ApplicationController
       redirect_to orders_path
     end
   end
-
 
   def track
     @order = Order.find(params[:id])
