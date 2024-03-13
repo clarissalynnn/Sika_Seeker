@@ -32,12 +32,4 @@ class ItemsController < ApplicationController
 
     @order = Order.new
   end
-
-  def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-
-    redirect_to order_path, notice: "Item was successfully deleted."
-
-  end
 end
