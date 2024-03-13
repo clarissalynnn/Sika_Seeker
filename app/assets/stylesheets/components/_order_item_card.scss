@@ -43,3 +43,16 @@
     width: 33.3%;
   }
 }
+
+.pages-title {
+  h3 {
+    padding: 30px;}
+}
+
+.menu-next-button {
+  &hover,
+  &focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+}

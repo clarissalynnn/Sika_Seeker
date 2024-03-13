@@ -1,8 +1,31 @@
-<div class="container">
-    <div class="container my-3">
-      <h1 style="text-align: center">Orders</h1>
-    </div>
+<div class="container mt-5">
+  <div class="container my-3">
+    <h1 style="text-align: center">Your Orders</h1>
   </div>
+</div>
 <% @orders.each do |order| %>
-  <%= render "card", order: order %>
+  <%= link_to order_path(order), class: "link" do  %>
+    <div class="container py-2">
+      <div class="card">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div>
+            <h3> Order #<%= order.id %> </h3>
+            <h3>Address: <%= order.address %></h3>
+            <p>$ <%= order.total_price %></p>
+            <p><%= order.order_date %></p>
+          </div>
+          <div class="mt-auto">
+            <%# default status pending %>
+            <% if order.status == "pending" %>
+              <button type="button"class="btn btn-warning w-100 text-white">In progress</button>
+            <% elsif order.status == "out_for_delivery" %>
+              <button type="button" class="btn btn-info w-100 text-white">Out for delivery</button>
+            <% else %>
+              <button type="button" class="btn btn-success w-100 text-white">Delivered</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>

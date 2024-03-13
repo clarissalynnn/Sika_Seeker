@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
     @orders = Order.all.order(created_at: :desc)
     @driver = current_user
     @driver_orders = Order.where(driver_id: @driver.id)
+
   end
 
   def show
@@ -16,8 +17,7 @@ class OrdersController < ApplicationController
       order_date: Date.today,
       customer_id: current_user.id,
       driver_id: User.driver.first.id,
-      address: "Batu Bolong",
-      total_price: 100,
+      total_price: 0,
       status: 0
     )
 
@@ -28,6 +28,13 @@ class OrdersController < ApplicationController
         quantity: 1
       )
     end
+
+    order = Order.find(order.id)
+    total_price = 0
+    order.order_items.each do |order_item|
+      total_price += order_item.item.price * order_item.quantity
+    end
+    order.update(total_price: total_price)
     # redirect_to orders_path
     redirect_to order_path(order)
   end
@@ -38,6 +45,28 @@ class OrdersController < ApplicationController
       flash[:notice] = "Order in progress"
       redirect_to orders_path
     end
+  end
+
+  def update_quantity
+    # binding.break
+    order_item = OrderItem.find(params[:order_item_id])
+    order_item.quantity += params[:quantity].to_i
+    order_item.order.total_price = params[:total_price].to_f
+    order_item.save
+    order_item.order.save
+  end
+
+  def checkout
+    @order = Order.find(params[:id])
+  end
+
+  def update_address
+    # raise
+    order = Order.find(params[:id])
+    order.update(address: params[:order][:address], longitude: params[:order][:longitude].to_f,
+                 latitude: params[:order][:latitude].to_f)
+
+    redirect_to track_order_path(order)
   end
 
   def out_for_delivery
@@ -58,7 +87,6 @@ class OrdersController < ApplicationController
 
   def track
     @order = Order.find(params[:id])
-
     @order_marker = {
       lat: @order.latitude,
       lng: @order.longitude,

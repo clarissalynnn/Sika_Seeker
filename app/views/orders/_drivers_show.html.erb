@@ -7,11 +7,11 @@
         <p class="fw-bold">Order items:</p>
         <% @order.order_items.each do |order_item| %>
         <div class="d-flex">
-        <p><%= order_item.quantity %> x </p>
-        <p>$<%= order_item.item.name  %></p>
+        <p class="me-2"><%= order_item.quantity %>x</p>
+        <p><%= order_item.item.name  %></p>
         </div>
         <% end %>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex  justify-content-between">
         <p class="fw-bold">Total:</p>
         <p>$<%= @order.total_price %></p>
         </div>
@@ -19,12 +19,18 @@
         <p class="fw-bold">Order date:</p>
         <p><%= @order.order_date %></p>
         </div>
-        <div class="show-btns d-flex justify-content-center mt-5">
-        <button class="btn btn-custom me-3"><%= link_to "Order out for delivery", out_for_delivery_order_path(@order),
-        style: "text-decoration:none; color: white;" , data: {turbo_method: :post, turbo_confirm: "Update order as out for delivery?"}%></button>
-        <button class="btn btn-custom"><%= link_to "Order completed", completed_order_path(@order),
-        style: "text-decoration:none; color: white", data: {turbo_method: :post, turbo_confirm: "Update order as completed?"}%></button>
-      </div>
+        <div class="show-btns d-flex flex-column justify-content-center mt-1 w-60">
+          <p class="text-center">Please update order status</p>
+          <%= link_to "Order out for delivery", out_for_delivery_order_path(@order),
+            class: "btn btn-custom me-3 w-100 mb-2 #{"disabled" if @order.status == 'out_for_delivery' || @order.status == "completed"}",
+            data: {turbo_method: :post, turbo_confirm: "Update order as out for delivery?"}%>
+          <%= link_to "Order completed", completed_order_path(@order),
+            class: "btn btn-custom w-100 #{"disabled" if @order.status == "completed"}",
+            data: { turbo_method: :post, turbo_confirm: "Update order as completed?" }
+          %>
+        </div>
       </div>
     </div>
 </div>
+<h1 class="text-center mt-4">Map</h1>
+<%# Here goes map with routes direction %>

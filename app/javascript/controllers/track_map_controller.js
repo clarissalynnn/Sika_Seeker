@@ -1,10 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 
+import driving_steps from "./driving_steps.json" assert { type: "json" };
+
 // Connects to data-controller="track-map"
 export default class extends Controller {
   static values = {
     apiKey: String,
     orderMarker: Object,
+    isDriver: Boolean
   };
 
   connect() {
@@ -29,7 +32,64 @@ export default class extends Controller {
 
     this.#addRoute();
     this.#addRoute();
+
+    // this.displayDrivingDirections();
   }
+
+  displayDrivingDirections(steps) {
+    const drivingDiv = document.getElementById("directions");
+
+    drivingDiv.innerHTML = `<p><strong>Distance to destination: ${Math.floor(steps[0].distance)}m</strong></p>`;
+    const timeDiv = document.getElementById("time");
+    timeDiv.innerHTML = `<p><strong>Estimated delivery in : ${Math.floor(steps[0].duration)}min  🍜</strong></p>`;
+    // get the sidebar and add the instructions
+    const instructions = document.getElementById('instructions');
+
+    let tripInstructions = '';
+    for (const step of steps) {
+    tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+    }
+    instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+    steps[0].distance / 60
+    )} min 🛵 </strong></p><ol>${tripInstructions}</ol>`;
+    const time = document.getElementById("steps-time");
+    time.innerHTML = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+
+    // array index
+    // const YEARS = 0
+    // const MONTHS = 1
+    const DAYS = 2
+    const HOURS = 3
+    const MINUTES = 4
+    // test time interval
+    function addInterval(date, interval) {
+      const parts = [
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+        date.getMilliseconds()
+      ]
+      // fetch keys/values
+      for (const [unit, value] of Object.entries(interval)) {
+          parts[unit] += value
+      }
+
+      return new Date(...parts)
+    }
+    const now = new Date();
+    const future = addInterval(now, {
+      [HOURS]: 0,
+      [MINUTES]: 10
+
+    })
+    console.log(now)
+    console.log(future)
+  }
+
+
 
   #addMarkersToMap() {
     // Order Marker
@@ -77,7 +137,8 @@ export default class extends Controller {
       .then((data) => {
         console.log(data);
 
-        // let coordinates = data.geometry.coordinates;
+        this.displayDrivingDirections(data.routes[0].legs[0].steps);
+
         let coordinates = data.routes[0].geometry.coordinates;
         // console.log(coordinates);
         const len = coordinates.length;
