@@ -36,21 +36,19 @@ export default class extends Controller {
 
   displayDrivingDirections(steps) {
     const drivingDiv = document.getElementById("directions");
-    drivingDiv.innerHTML = `<p><strong>Distance to destination: ${Math.floor(steps[0].distance)}m</strong></p>`;
+    drivingDiv.innerHTML = `<p><strong>Distance to destination: ${Math.floor(steps[1].distance)}m</strong></p>`;
     const timeDiv = document.getElementById("time");
-    timeDiv.innerHTML = `<p><strong>Estimated delivery in : ${Math.floor(steps[0].duration)}min  🍜</strong></p>`;
+    timeDiv.innerHTML = `<p><strong>Delivery duration target : ${Math.floor(steps[0].duration)}min </strong></p>`;
     // get the sidebar and add the instructions
     const instructions = document.getElementById('instructions');
 
     let tripInstructions = '';
-    for (const step of steps) {
-    tripInstructions += `<li>${step.maneuver.instruction}</li>`;
-    }
-    instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
-    steps[0].distance / 60
-    )} min 🛵 </strong></p><ol>${tripInstructions}</ol>`;
-    const time = document.getElementById("steps-time");
-    time.innerHTML = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+      for (const step of steps) {
+      tripInstructions += `<li>In <strong>${Math.floor(step.maneuver.bearing_after)}m </strong> ${step.maneuver.instruction}</li>`;
+      }
+      instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+      steps[1].distance / 60
+      )} min 🛵 </strong></p><ol>${tripInstructions}</ol>`;
 
     // array index
     // const YEARS = 0
@@ -77,16 +75,18 @@ export default class extends Controller {
       return new Date(...parts)
     }
     const now = new Date();
-    const future = addInterval(now, {
+    let future = addInterval(now, {
       [HOURS]: 0,
-      [MINUTES]: 10
-
+      [MINUTES]: 40
     })
     console.log(now)
     console.log(future)
+    // const strftime = document.getElementById("interval");
+    // strftime.innerHTML = future.strftime("%a, %d %b %Y %H:%M:%S #{offset_format}")
+
+    const intervalDiv = document.getElementById("interval");
+    intervalDiv.innerHTML = `<p><strong>Estimated delivery at   ${future.toLocaleTimeString()} <strong></p>`;
   }
-
-
 
   #addMarkersToMap() {
     // Order Marker
