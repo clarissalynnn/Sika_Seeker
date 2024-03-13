@@ -14,23 +14,41 @@
     <%= f.input :latitude, as: :hidden %>
   </div>
 
-  <div class="your-order-container text-center">
-    <div class="order-details">
-      <h4 class="title"> <strong>Order #</strong> <%= @order.id %></h4>
+  <div class="container border border-info">
+    <h4 class="my-5 text-center p-3 border-bottom border-dark"> <strong>Order #</strong> <%= @order.id %></h4>
+    <h5 class="my-4 font-weight-bold">Order Summary:</h5>
+    <div class="row">
+      <% @order.order_items.each do |order_item| %>
+      <div class="col-6 text-right">
+        <h6> <%= order_item.item.name %>: </h6>
+      </div>
+      <div class="col-6">
+        <h6><%= order_item.quantity %></h6>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container border border-info mt-4">
+    <div class="my-4">
       <div class="row">
-        <div class="col-8">
-          <h6> <strong>Number of items: </strong></h6>
+        <div class="col-6">
+          <h5> <strong>Total items: </strong></h5>
         </div>
-        <h6 class="col-4 text-right">
-          <%= @total_quantity %>
-        </h6>
+        <div class="col-6">
+          <h5><%= @total_quantity  %></h5>
+        </div>
       </div>
       <div class="row">
-        <h6 class="total col-8"> <strong>Total: </strong></h6>
-        <h6 class="col-4 text-left"> <%= @order.total_price %> </h6>
+        <div class="col-6">
+          <h5> <strong>Total price: </strong></h5>
+        </div>
+        <div class="col-6">
+          <h5><%= @order.total_price.to_i %> 000</h5>
+        </div>
       </div>
     </div>
   </div>
+
 
   <div class="form-actions">
     <%= f.button :submit, "Confirm Order", class: 'btn btn-custom w-100 mt-2' %>
