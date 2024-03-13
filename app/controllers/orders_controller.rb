@@ -31,10 +31,7 @@ class OrdersController < ApplicationController
     end
 
     order = Order.find(order.id)
-    total_price = 0
-    order.order_items.each do |order_item|
-      total_price += order_item.item.price * order_item.quantity
-    end
+    total_price = order.calculate_total_price
     order.update(total_price: total_price)
     # redirect_to orders_path
     redirect_to order_path(order)
@@ -51,6 +48,16 @@ class OrdersController < ApplicationController
 
   def checkout
     @order = Order.find(params[:id])
+    @order.total_price = @order.calculate_total_price
+    @total_quantity = @order.calculate_total_quantity
+    @order.save
+  end
+
+  def destroy_order_item
+    # binding.break
+    @order_item = OrderItem.find(params[:order_item_id])
+    @order_item.destroy
+    redirect_to order_path, notice: "Item was successfully deleted."
   end
 
   def update_address
@@ -86,4 +93,5 @@ class OrdersController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {order: @order})
     }.to_json
   end
+
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about', as: 'about'
   get 'pages/wheel' => "pages#wheel"
   post 'pages/wheel' => "pages#wheel_api"
+  post "pages/wheel/create" => "pages#create"
 
 
 # Route for the loading page
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
 
   # items routes
   get 'items/index', to: "items#index"
-
 
   # Devise routes for users
 
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  get "/orders/:id", to: "orders#show", as: :order
+  get "/orders/:id", to: "orders#show", as: 'order'
   # for users and drivers
   get "/orders", to: "orders#index"
   post "/orders", to: "orders#create"
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post 'orders/:id/completed', to: 'orders#completed', as: 'completed_order'
   patch 'orders/:id/update', to: 'orders#update', as: 'update_order'
   get 'orders/:id/checkout', to: 'orders#checkout', as: 'checkout'
+  get 'orders/:id/destroy-order-item', to: 'orders#destroy_order_item', as: 'destroy_order_item'
 
   # Update quantity
   get "orders/:id/update-quantity", to: 'orders#update_quantity', as: 'update_quantity'
@@ -48,5 +49,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  # Delete order item from the cart
 end

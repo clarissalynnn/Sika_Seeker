@@ -9,7 +9,8 @@
         <div class="col-s7">
           <h6><%= order_item.item.name %></h6>
         </div>
-        <i class="fa fa-remove"></i>
+          <i class="fa fa-remove"
+            data-action="click->quantity#destroyOrderItem" data-order-id="<%= @order.id %>" data-order-item-id="<%= order_item.id %>"></i>,
       </div>
       <div class="cart-quantity">
         <div class="quantity-label">
@@ -26,7 +27,7 @@
           <h6>Price: </h6>
         </div>
         <div class="price-label">
-          <span data-quantity-target="price"><%= order_item.item.price %></span>
+          <h6>Rp <span data-quantity-target="price"><%= order_item.item.price %></span> 000</h6>
         </div>
       </div>
     </div>
