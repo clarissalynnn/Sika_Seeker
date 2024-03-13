@@ -8,9 +8,12 @@ class Order < ApplicationRecord
 
   has_many :items, through: :order_items
 
+  enum status: { pending: 0, payment_successful: 1, in_progress: 2, out_for_delivery: 3, completed: 4 }
+
+  # validates :status, inclusion: { in: %w(pending in_progress out_for_delivery completed),
+  #                                 message: "%{value} is not a valid status" }
+
   validate :driver_must_be_driver
-  validates :status, inclusion: { in: %w(pending in_progress out_for_delivery completed),
-                                  message: "%{value} is not a valid status" }
 
   private
 

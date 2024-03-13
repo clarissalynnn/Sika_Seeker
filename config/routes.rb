@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: "pages#home"
+
   # Routes for the spinning wheel
   get 'pages/home', to: 'pages#home', as: 'home'
   get 'about', to: 'pages#about', as: 'about'
@@ -9,7 +11,6 @@ Rails.application.routes.draw do
 
 # Route for the loading page
   get 'loading', to: 'loading#show'
-  root to: "pages#home"
 
   # items routes
   get 'items/index', to: "items#index"
@@ -36,5 +37,6 @@ Rails.application.routes.draw do
   # Order track page
   get "/orders/:id/track", to: "orders#track"
 
-  # Defines the root path route ("/")
+  # Payment routes
+  get '/payment', to: 'payments#new', as: 'payment_form'
 end

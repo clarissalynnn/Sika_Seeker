@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       driver_id: User.driver.first.id,
       address: "Batu Bolong",
       total_price: 100,
-      status: "pending"
+      status: 0
     )
 
     params[:order][:item_ids].split(",").each do |item|
@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 
   def in_progress
     @order = Order.find(params[:id])
-    if @order.update(status: 'in_progress')
+    if @order.update(status: 2)
       flash[:notice] = "Order in progress"
       redirect_to orders_path
     end
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
 
   def out_for_delivery
     @order = Order.find(params[:id])
-    if @order.update(status: 'out_for_delivery')
+    if @order.update(status: 3)
       flash[:alert] = "Order out for delivery"
       redirect_to orders_path
     end
@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
 
   def completed
     @order = Order.find(params[:id])
-    if @order.update(status: 'completed')
+    if @order.update(status: 4)
       flash[:alert] = "Order completed "
       redirect_to orders_path
     end
@@ -64,5 +64,15 @@ class OrdersController < ApplicationController
       lng: @order.longitude,
       info_window_html: render_to_string(partial: "info_window", locals: {order: @order})
     }.to_json
+  end
+
+  def process_payment
+    @order = Order.find(params[:id])
+    if @order.update(status: 1)
+      redirect_to order_path(@order), notice: 'Payment processed successfully.'
+    else
+      flash.now[:alert] = 'Failed to update order status.'
+      render :show
+    end
   end
 end
