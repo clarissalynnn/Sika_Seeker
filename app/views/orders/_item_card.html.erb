@@ -1,30 +1,33 @@
 <div class="container">
-  <div class="card-container p-3">
-    <div class="cart-image-title-button">
-      <div class="col-s4">
-        <%= image_tag order_item.item.photo, alt: "text", class: "image-tag"%>
+  <div class="container" data-controller="quantity" data-quantity-order-item-id-value="<%= order_item.id %>"
+    data-quantity-order-id-value="<%= @order.id %>">
+    <div class="card-container p-3">
+      <div class="cart-image-title-button">
+        <div class="col-s4">
+          <%= image_tag order_item.item.photo, alt: "text", class: "image-tag"%>
+        </div>
+        <div class="col-s7">
+          <h6><%= order_item.item.name %></h6>
+        </div>
+        <i class="fa fa-remove"></i>
       </div>
-      <div class="col-s7">
-        <h6><%= order_item.item.name %></h6>
+      <div class="cart-quantity">
+        <div class="quantity-label">
+          <h6>Quantity: </h6>
+        </div>
+        <div class="input-field">
+          <i class="fa-solid fa-minus" data-action="click->quantity#decrease"></i>
+          <input id="quantity" type="number" value=<%= order_item.quantity %> data-quantity-target="quantity">
+          <i class="fa-solid fa-plus" data-action="click->quantity#increase"></i>
+        </div>
       </div>
-      <i class="fa fa-remove"></i>
-    </div>
-    <div class="cart-quantity">
-      <div class="quantity-label">
-        <h6>Quantity: </h6>
-      </div>
-      <div class="input-field">
-        <i class="fa-solid fa-minus"></i>
-        <input id="quantity" type="number" value=<%= order_item.quantity %>>
-        <i class="fa-solid fa-plus"></i>
-      </div>
-    </div>
-    <div class="price-container">
-      <div class="total-label">
-        <h6>Price: </h6>
-      </div>
-      <div class="price-label">
-        <h6><%= order_item.item.price %></h6>
+      <div class="price-container">
+        <div class="total-label">
+          <h6>Price: </h6>
+        </div>
+        <div class="price-label">
+          <span data-quantity-target="price"><%= order_item.item.price %></span>
+        </div>
       </div>
     </div>
   </div>
