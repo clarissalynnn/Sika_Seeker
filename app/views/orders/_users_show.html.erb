@@ -17,9 +17,7 @@
           <span> k </span>
         </div>
         <div class="wheel-btns">
-          <%= link_to checkout_path(@order), class: "btn btn-custom w-100 mt-2", data: {
-                             action: "click->quantity#updateQuantity"
-                            } do %>Checkout<% end %>
+          <%= link_to checkout_path(@order), class: "btn btn-custom w-100 mt-2" do %>Checkout<% end %>
         </div>
       </div>
     </div>

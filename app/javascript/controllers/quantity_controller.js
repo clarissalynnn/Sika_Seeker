@@ -9,12 +9,13 @@ export default class extends Controller {
   };
 
   connect() {
-    console.log("Connected!");
-    const totalPrice =
-      parseInt(this.quantityTarget.value) *
-      parseInt(this.priceTarget.innerText);
-    document.getElementById("total-price").innerText =
-      totalPrice + parseInt(document.getElementById("total-price").innerHTML);
+    const quantity = parseInt(this.quantityTarget.value);
+    const price = parseInt(this.priceTarget.innerText);
+    const totalPrice = quantity * price;
+
+    const totalElement = document.getElementById("total-price");
+    totalElement.innerText = parseInt(totalElement.innerText) + totalPrice;
+
     console.log(totalPrice);
 
     const cartLabel = document.getElementById("lblCartCount");
@@ -25,18 +26,18 @@ export default class extends Controller {
 
   increase() {
     console.log("increase clicked");
-    console.log(this.orderItemIdValue);
-    console.log(this.orderIdValue);
-    // debugger;
     const newQuantity = parseInt(this.quantityTarget.value || 0) + 1;
     this.quantityTarget.value = newQuantity;
-    const totalPrice = 1 * parseInt(this.priceTarget.innerText);
+    const totalPrice = parseInt(this.priceTarget.innerText);
+    const currentTotalPrice = parseInt(
+      document.getElementById("total-price").innerText
+    );
     document.getElementById("total-price").innerText =
-      totalPrice + parseInt(document.getElementById("total-price").innerText);
+      currentTotalPrice + totalPrice;
     this.updateQuantity(
       this.orderIdValue,
       this.orderItemIdValue,
-      document.getElementById("total-price").innerText,
+      currentTotalPrice + totalPrice,
       1
     );
   }
@@ -45,13 +46,16 @@ export default class extends Controller {
     console.log("decrease clicked");
     const newQuantity = parseInt(this.quantityTarget.value || 0) - 1;
     this.quantityTarget.value = newQuantity;
-    const totalPrice = 1 * parseInt(this.priceTarget.innerText);
+    const totalPrice = parseInt(this.priceTarget.innerText);
+    const currentTotalPrice = parseInt(
+      document.getElementById("total-price").innerText
+    );
     document.getElementById("total-price").innerText =
-      parseInt(document.getElementById("total-price").innerText) - totalPrice;
+      currentTotalPrice - totalPrice;
     this.updateQuantity(
       this.orderIdValue,
       this.orderItemIdValue,
-      document.getElementById("total-price").innerText,
+      currentTotalPrice - totalPrice,
       -1
     );
     if (newQuantity === 0) {
@@ -59,25 +63,31 @@ export default class extends Controller {
     }
   }
 
-  updateQuantity(orderId, orderItemId, totalPrice, quantity) {
-    const url = `/orders/${orderId}/update-quantity?order_item_id=${orderItemId}&total_price=${totalPrice}&quantity=${quantity}`;
-    fetch(url);
-  }
-
   destroyOrderItem(event) {
-    // debugger;
-    // console.log(event.target.dataset);
     const orderId = event.target.dataset.orderId;
     const orderItemId = event.target.dataset.orderItemId;
-    // console.log("deleted");
     const url = `/orders/${orderId}/destroy-order-item?order_item_id=${orderItemId}`;
-    fetch(url);
+    fetch(url)
+      .then(() => {
+        const quantity = parseInt(this.quantityTarget.value || 0);
+        const totalPrice = parseInt(this.priceTarget.innerText);
+        const currentTotalPrice = parseInt(
+          document.getElementById("total-price").innerText
+        );
+        document.getElementById("total-price").innerText =
+          currentTotalPrice - quantity * totalPrice;
+        this.element.remove();
+      })
+      .catch((error) => {
+        console.error("Error destroying order item:", error);
+      });
+  }
 
-    const quantity = parseInt(this.quantityTarget.value || 0);
-    const totalPrice = quantity * parseInt(this.priceTarget.innerText);
-    document.getElementById("total-price").innerText =
-      parseInt(document.getElementById("total-price").innerText) - totalPrice;
-    this.element.remove();
+  updateQuantity(orderId, orderItemId, totalPrice, quantity) {
+    const url = `/orders/${orderId}/update-quantity?order_item_id=${orderItemId}&total_price=${totalPrice}&quantity=${quantity}`;
+    fetch(url).catch((error) => {
+      console.error("Error updating quantity:", error);
+    });
   }
 
   // calculateTotal(orderId, orderItemId, totalPrice) {
