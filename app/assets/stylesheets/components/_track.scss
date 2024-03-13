@@ -3,19 +3,62 @@ box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 justify-content: space-around;
 text-align: center;
 }
+.track-btn {
+justify-content: space-around;
+padding: 5%;
+}
 
 .track-btn, a{
-justify-content: space-around;
 text-align: center;
 color: black;
 text-decoration: none;
 }
 
 .btn1, .btn2 {
-background-color:#e0b531 ;
+background-color:#e0b531;
 border-radius: 5px;
 border: none;
+width: 75%;
+text-align: center;
+font-size: 14px;
 }
+.btn3 {
+background-color:#e0b531;
+border-radius: 5px;
+border: none;
+text-align: center;
+}
+
 .info {
 color: #e0b531;
+font-size: smaller;
+}
+
+.tracking-title{
+text-align: end;
+}
+
+.badge-track .badge{
+width: 100%;
+color: #e0b531;
+}
+
+#time {
+padding: 2px;
+}
+
+.badge, .interval {
+text-align: start;
+font-size: smaller;
+margin-top: 10%;
+}
+.driver-direction {
+text-align: center;
+font-weight: bolder;
+
+}
+
+.card-instructions {
+background-color: hsl(0, 2%, 91%);
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }

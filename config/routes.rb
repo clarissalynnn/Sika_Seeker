@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about', as: 'about'
   get 'pages/wheel' => "pages#wheel"
   post 'pages/wheel' => "pages#wheel_api"
+  post "pages/wheel/create" => "pages#create"
 
 
 # Route for the loading page
