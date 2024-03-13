@@ -45,4 +45,9 @@ export default class extends Controller {
     const url = `/orders/${orderId}/update-quantity?order_item_id=${orderItemId}&total_price=${totalPrice}&quantity=${quantity}`;
     fetch(url);
   }
+
+  // calculateTotal(orderId, orderItemId, totalPrice) {
+  //   document.getElementById("total-price").innerText = parseInt(document.getElementById("total-price").innerText);
+  //   this.updateQuantity(this.orderIdValue, this.orderItemIdValue, document.getElementById("total-price").innerText);
+  // }
 }
