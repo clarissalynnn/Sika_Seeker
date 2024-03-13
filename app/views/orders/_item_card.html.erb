@@ -7,14 +7,15 @@
           <%= image_tag order_item.item.photo, alt: "text", class: "image-tag"%>
         </div>
         <div class="col-s7">
-          <h6><%= order_item.item.name %></h6>
+          <h6><strong><%= order_item.item.name %></strong></h6>
         </div>
           <i class="fa fa-remove"
-            data-action="click->quantity#destroyOrderItem" data-order-id="<%= @order.id %>" data-order-item-id="<%= order_item.id %>"></i>,
+            data-action="click->quantity#destroyOrderItem" data-order-id="<%= @order.id %>" data-order-item-id="<%= order_item.id %>">
+          </i>
       </div>
       <div class="cart-quantity">
         <div class="quantity-label">
-          <h6>Quantity: </h6>
+          <h6><strong>Quantity: </strong></h6>
         </div>
         <div class="input-field">
           <i class="fa-solid fa-minus" data-action="click->quantity#decrease"></i>
@@ -24,9 +25,9 @@
       </div>
       <div class="price-container">
         <div class="total-label">
-          <h6>Price: </h6>
+          <h6><strong>Price: </strong></h6>
         </div>
-        <div class="price-label">
+        <div class="price-label text-right">
           <h6>Rp <span data-quantity-target="price"><%= order_item.item.price %></span> 000</h6>
         </div>
       </div>
