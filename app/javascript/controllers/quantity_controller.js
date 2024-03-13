@@ -89,9 +89,4 @@ export default class extends Controller {
       console.error("Error updating quantity:", error);
     });
   }
-
-  // calculateTotal(orderId, orderItemId, totalPrice) {
-  //   document.getElementById("total-price").innerText = parseInt(document.getElementById("total-price").innerText);
-  //   this.updateQuantity(this.orderIdValue, this.orderItemIdValue, document.getElementById("total-price").innerText);
-  // }
 }

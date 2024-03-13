@@ -49,6 +49,7 @@ class OrdersController < ApplicationController
   def checkout
     @order = Order.find(params[:id])
     @order.total_price = @order.calculate_total_price
+    @total_quantity = @order.calculate_total_quantity
     @order.save
   end
 

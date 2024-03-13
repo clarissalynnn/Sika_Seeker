@@ -21,6 +21,15 @@ class Order < ApplicationRecord
     total_price
   end
 
+  def calculate_total_quantity
+    total_quantity = 0
+    order = self
+    order.order_items.each do |order_item|
+      total_quantity += order_item.quantity
+    end
+    total_quantity
+  end
+
   private
 
   def driver_must_be_driver
