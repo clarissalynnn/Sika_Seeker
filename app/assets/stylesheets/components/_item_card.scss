@@ -99,3 +99,9 @@
 .accordion-button:not(.collapsed) {
   background-color: $yellow;
 }
+
+.price-label {
+  .h6 {
+    display: inline;
+  }
+}
