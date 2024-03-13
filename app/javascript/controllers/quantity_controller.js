@@ -54,6 +54,9 @@ export default class extends Controller {
       document.getElementById("total-price").innerText,
       -1
     );
+    if (newQuantity === 0) {
+      this.element.remove();
+    }
   }
 
   updateQuantity(orderId, orderItemId, totalPrice, quantity) {
@@ -69,6 +72,12 @@ export default class extends Controller {
     // console.log("deleted");
     const url = `/orders/${orderId}/destroy-order-item?order_item_id=${orderItemId}`;
     fetch(url);
+
+    const quantity = parseInt(this.quantityTarget.value || 0);
+    const totalPrice = quantity * parseInt(this.priceTarget.innerText);
+    document.getElementById("total-price").innerText =
+      parseInt(document.getElementById("total-price").innerText) - totalPrice;
+    this.element.remove();
   }
 
   // calculateTotal(orderId, orderItemId, totalPrice) {

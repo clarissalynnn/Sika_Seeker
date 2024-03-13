@@ -12,9 +12,19 @@ class Order < ApplicationRecord
   validates :status, inclusion: { in: %w(pending in_progress out_for_delivery completed),
                                   message: "%{value} is not a valid status" }
 
+  def calculate_total_price
+    total_price = 0
+    order = self
+    order.order_items.each do |order_item|
+      total_price += order_item.item.price * order_item.quantity
+    end
+    total_price
+  end
+
   private
 
   def driver_must_be_driver
     errors.add(:driver, "must be a driver") unless driver&.is_driver?
   end
+
 end
