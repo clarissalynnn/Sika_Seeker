@@ -1,32 +1,33 @@
-<div class="menu-grid app-pages app-section">
+<div class="item-index-container">
   <div class="container">
     <div class="pages-title">
-      <h3>Menu</h3>
+      <h3><strong>Menu</strong></h3>
     </div>
   </div>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <div data-controller="search-menu">
-        <%= form_with url: items_index_path, method: :get, html: {class: "mb-4", data: {search_menu_target: "form", action: "submit->search-menu#clear"}} do |f| %>
-          <%= f.text_field :query,
-                           class: "form-control border-info border-2 shadow",
-                           value: params[:query],
-                           data: {
-                             search_menu_target: "input",
-                             action: "keyup->search-menu#update"
-                            },
-                           placeholder: "Search for a dish"
-                           %>
-        <% end %>
-        <div data-search-menu-target="list" class="d-none">
-         <%= render "list", items: @items %>
+    <div class="row">
+      <div class="col">
+        <div data-controller="search-menu">
+          <%= form_with url: items_index_path, method: :get, html: {class: "mb-4", data: {search_menu_target: "form", action: "submit->search-menu#clear"}} do |f| %>
+            <%= f.text_field :query,
+                             class: "form-control border-info border-2 shadow",
+                             value: params[:query],
+                             data: {
+                               search_menu_target: "input",
+                               action: "keyup->search-menu#update"
+                              },
+                             placeholder: "Search for a dish"
+                             %>
+          <% end %>
+          <div data-search-menu-target="list" class="d-none">
+           <%= render "list", items: @items %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
+
 <div class="container" data-controller="cart-number">
   <%= render "accordion", items: @rice_items %>
 </div>

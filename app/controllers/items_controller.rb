@@ -32,5 +32,4 @@ class ItemsController < ApplicationController
 
     @order = Order.new
   end
-
 end

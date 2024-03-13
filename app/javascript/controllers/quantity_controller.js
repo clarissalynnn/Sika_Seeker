@@ -18,6 +18,7 @@ export default class extends Controller {
     if (cartLabel) {
       cartLabel.remove();
     }
+    console.log(this.element);
   }
 
   increase() {
@@ -35,6 +36,9 @@ export default class extends Controller {
   decrease() {
     console.log("decrease clicked");
     const newQuantity = parseInt(this.quantityTarget.value || 0) - 1;
+    if (newQuantity == 0) {
+      this.element.remove();
+    }
     this.quantityTarget.value = newQuantity;
     const totalPrice = 1 * parseInt(this.priceTarget.innerText);
     document.getElementById("total-price").innerText = parseInt(document.getElementById("total-price").innerText) - totalPrice;
@@ -50,4 +54,5 @@ export default class extends Controller {
   //   document.getElementById("total-price").innerText = parseInt(document.getElementById("total-price").innerText);
   //   this.updateQuantity(this.orderIdValue, this.orderItemIdValue, document.getElementById("total-price").innerText);
   // }
+
 }

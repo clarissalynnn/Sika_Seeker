@@ -1,7 +1,7 @@
 <div class="accordion" id="accordionExample">
     <div class="accordion-item" data-bs-toggle="collapse">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background-image: url('https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center center">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center center">
           Rice
         </button>
       </h2>
@@ -14,7 +14,7 @@
                   <%= image_tag item.photo, alt: "text" %>
                   <h6><%= item.name %></h6>
                   <div class="price">
-                    <h5>Rp <%= item.price %></h5>
+                    <h6>Rp <%= item.price %>.000</h6>
                   </div>
                   <button class="button" data-cart-number-target='addButton' data-action='click->cart-number#addToCart'
                     data-item-id="<%= item.id %>">Add to cart
@@ -28,7 +28,7 @@
     </div>
     <div class="accordion-item" data-bs-toggle="collapse">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1645696301019-35adcc18fc21?q=80&w=1929&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center center">
           Animal Protein
         </button>
       </h2>
@@ -41,7 +41,7 @@
                   <%= image_tag item.photo, alt: "text" %>
                   <h6><%= item.name %></h6>
                   <div class="price">
-                    <h5>Rp <%= item.price %></h5>
+                    <h6>Rp <%= item.price %>.000</h6>
                   </div>
                   <button class="button" data-cart-number-target='addButton' data-action='click->cart-number#addToCart'
                     data-item-id="<%= item.id %>">Add to cart
@@ -55,7 +55,7 @@
     </div>
     <div class="accordion-item" data-bs-toggle="collapse">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1546069901-5ec6a79120b0?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center center">
           Plant Protein
         </button>
       </h2>
@@ -68,7 +68,7 @@
                   <%= image_tag item.photo, alt: "text" %>
                   <h6><%= item.name %></h6>
                   <div class="price">
-                    <h5>Rp <%= item.price %></h5>
+                    <h6>Rp <%= item.price %>.000</h6>
                   </div>
                   <button class="button" data-cart-number-target='addButton' data-action='click->cart-number#addToCart'
                     data-item-id="<%= item.id %>">Add to cart
@@ -82,7 +82,7 @@
     </div>
     <div class="accordion-item" data-bs-toggle="collapse">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1603097898793-4f2ff7c8e286?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center center">
           Vegetables
         </button>
       </h2>
@@ -95,7 +95,7 @@
                   <%= image_tag item.photo, alt: "text" %>
                   <h6><%= item.name %></h6>
                   <div class="price">
-                    <h5>Rp <%= item.price %></h5>
+                    <h6>Rp <%= item.price %>.000</h6>
                   </div>
                   <button class="button" data-cart-number-target='addButton' data-action='click->cart-number#addToCart'
                     data-item-id="<%= item.id %>">Add to cart

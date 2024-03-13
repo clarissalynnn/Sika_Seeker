@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   # items routes
   get 'items/index', to: "items#index"
 
-
   # Devise routes for users
 
   devise_for :users, controllers: {
