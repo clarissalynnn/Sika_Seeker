@@ -53,6 +53,13 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def destroy_order_item
+    binding.break
+    @order_item = OrderItem.find(params[:order_item_id])
+    @order_item.destroy
+    redirect_to order_path, notice: "Item was successfully deleted."
+  end
+
   def update_address
     # raise
     order = Order.find(params[:id])
@@ -86,4 +93,5 @@ class OrdersController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {order: @order})
     }.to_json
   end
+
 end

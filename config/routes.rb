@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   # items routes
   get 'items/index', to: "items#index"
 
-
   # Devise routes for users
 
   devise_for :users, controllers: {
@@ -34,6 +33,7 @@ Rails.application.routes.draw do
   post 'orders/:id/completed', to: 'orders#completed', as: 'completed_order'
   patch 'orders/:id/update', to: 'orders#update', as: 'update_order'
   get 'orders/:id/checkout', to: 'orders#checkout', as: 'checkout'
+  get 'orders/:id/destroy-order-item', to: 'orders#destroy_order_item', as: 'destroy_order_item'
 
   # Update quantity
   get "orders/:id/update-quantity", to: 'orders#update_quantity', as: 'update_quantity'
@@ -48,5 +48,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  # Delete order item from the cart
 end
