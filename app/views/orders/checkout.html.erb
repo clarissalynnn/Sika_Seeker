@@ -22,9 +22,7 @@
           <h6> <strong>Number of items: </strong></h6>
         </div>
         <h6 class="col-4 text-right">
-          <% @order.order_items.each do |order_item| %>
-          <%= order_item.quantity %>
-          <% end %>
+          <%= @total_quantity %>
         </h6>
       </div>
       <div class="row">
