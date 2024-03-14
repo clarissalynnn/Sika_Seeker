@@ -1,10 +1,7 @@
-<div class="item-index-container">
-  <div class="container">
-    <div class="pages-title">
-      <h3><strong>Menu</strong></h3>
-    </div>
-  </div>
+<div class="menu-title-container text-center my-3">
+  <h3 class="display-2 fw-bolder">Menu</h3>
 </div>
+
 <div class="container">
     <div class="row">
       <div class="col">
@@ -32,9 +29,9 @@
 <div class="container" data-controller="cart-number">
   <%= render "accordion", items: @rice_items %>
 </div>
-<div>
+<div class="next-button">
   <%= form_with(model: @order, method: :post) do |f| %>
     <%= f.hidden_field :item_ids, data: { cart_number_target: 'items' } %>
-    <%= f.submit "Next", class: "btn btn-info col-12 my-2 menu-next-button"%>
+    <%= f.submit "Next", class: "btn btn-info col-12 my-2 menu-next-button font-bolder"%>
   <% end %>
 </div>

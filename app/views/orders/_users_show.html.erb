@@ -1,11 +1,8 @@
-<div class="user-show-container">
-  <div class="container">
-    <div class="pages-title">
-      <h3><strong>Shopping Cart</strong></h3>
-      <p> Please review your order before proceeding:</p>
-    </div>
-  </div>
+<div class="menu-title-container text-center my-3">
+  <h3 class="display-2 fw-bolder">Menu</h3>
+  <p> Please review your order before proceeding:</p>
 </div>
+
 <% @order.order_items.each do |order_item| %>
   <div class="container">
       <%= render "item_card", order_item: order_item %>
