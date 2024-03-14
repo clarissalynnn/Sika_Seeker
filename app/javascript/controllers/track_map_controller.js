@@ -112,7 +112,7 @@ export default class extends Controller {
       this.orderMarkerValue.info_window_html
     );
 
-    new mapboxgl.Marker({ color: '#e0b531' })
+    new mapboxgl.Marker({ color: 'red' })
       .setLngLat([this.orderMarkerValue.lng, this.orderMarkerValue.lat])
       .setPopup(orderPopup)
       .addTo(this.map);
