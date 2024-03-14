@@ -1,11 +1,12 @@
 .accordion-button {
 padding: 35px;
-font-size: 1.1rem;
-margin-bottom: 7px;
+font-size: 20px;
+margin-bottom: 8px;
 box-shadow: lightgray 2px 2px 4px;
 justify-content: center;
 font-weight: 700;
 color: $white;
+letter-spacing: 2px;
 }
 
 .accordion-item {
@@ -18,4 +19,22 @@ color: $white;
 
 .accordion-button::after {
   display: none;
+  margin-bottom: 8px;
+}
+
+.next-button {
+  .btn {
+    font-weight: 700;
+    font-size: 18px;
+    color: $white;
+    letter-spacing: 2px;
+    font-family: 'Libre Baskerville';
+}
+}
+
+.col {
+  .form-control {
+    font-family: 'Libre Baskerville';
+  }
+
 }

@@ -13,6 +13,11 @@ export default class extends Controller {
     // console.log(this.apiKeyValue);
     // console.log(this.orderMarkerValue);
 
+    const cartLabel = document.getElementById("lblCartCount");
+    if (cartLabel) {
+      cartLabel.remove();
+    }
+
     mapboxgl.accessToken = this.apiKeyValue;
     this.map = new mapboxgl.Map({
       container: this.element,

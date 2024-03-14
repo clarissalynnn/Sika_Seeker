@@ -20,9 +20,22 @@
 }
 
 .total-details {
+  justify-content: space-between;
+  .h6 {
+    margin-bottom: 0px;
+    font-weight: 700;
+  }
   span {
     margin-left: 15px;
     margin-right: 5px;
     font-family: $headers-font;
   }
+}
+
+.cart-total-container {
+  padding: 12px;
+}
+
+.total-card-container {
+  margin: 0px;
 }
