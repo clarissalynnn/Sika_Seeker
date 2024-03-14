@@ -1,39 +1,37 @@
-<div class="item-index-container">
-  <div class="container">
-    <div class="pages-title">
-      <h3><strong>Menu</strong></h3>
-    </div>
-  </div>
+<div class="menu-title-container text-center my-3">
+  <h3 class="display-2 fw-bolder">Menu</h3>
 </div>
+
 <div class="container">
     <div class="row">
       <div class="col">
         <div data-controller="search-menu">
           <%= form_with url: items_index_path, method: :get, html: {class: "mb-4", data: {search_menu_target: "form", action: "submit->search-menu#clear"}} do |f| %>
             <%= f.text_field :query,
-                             class: "form-control border-info border-2 shadow",
-                             value: params[:query],
-                             data: {
-                               search_menu_target: "input",
-                               action: "keyup->search-menu#update"
+                              class: "search-form form-control border-info border-2 rounded-2'",
+                              value: params[:query],
+                              data: {
+                                search_menu_target: "input",
+                                action: "keyup->search-menu#update"
                               },
-                             placeholder: "Search for a dish"
-                             %>
+                              placeholder: "Search for a dish"
+                              %>
           <% end %>
           <div data-search-menu-target="list" class="d-none">
-           <%= render "list", items: @items %>
+            <%= render "list", items: @items %>
           </div>
         </div>
       </div>
     </div>
 </div>
 
+
 <div class="container" data-controller="cart-number">
   <%= render "accordion", items: @rice_items %>
 </div>
-<div>
+<div class="next-button">
   <%= form_with(model: @order, method: :post) do |f| %>
     <%= f.hidden_field :item_ids, data: { cart_number_target: 'items' } %>
-    <%= f.submit "Next", class: "btn btn-info col-12 my-2 menu-next-button"%>
+    <%= f.submit "Next", class: "btn btn-info col-12 my-2 menu-next-button font-bolder"%>
   <% end %>
 </div>

@@ -11,9 +11,9 @@
   height: 25px;
   border: 1px solid #ccc;
   padding: 0;
-  width: 40px;
-  text-align: center;
-  position: relative;
+  width: 35px;
+  text-align: right;
+  // position: relative;
   bottom: 4px;
   background-color: transparent;
 }
@@ -44,10 +44,6 @@
   }
 }
 
-.pages-title {
-  h3 {
-    padding: 30px;}
-}
 
 .menu-next-button {
   &hover,

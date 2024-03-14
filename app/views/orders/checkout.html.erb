@@ -1,5 +1,5 @@
-<div class="container text-center mt-5 mb-5" data-controller="checkout">
-  <h3> <strong>Checkout</strong> </h3>
+<div class="menu-title-container text-center my-3">
+  <h3 class="display-2 fw-bolder">Checkout</h3>
 </div>
 
 <%= simple_form_for :order, url: update_address_path(id: @order.id) do |f| %>
@@ -14,44 +14,51 @@
     <%= f.input :latitude, as: :hidden %>
   </div>
 
-  <div class="container border border-info">
-    <h4 class="my-5 text-center p-3 border-bottom border-dark"> <strong>Order #</strong> <%= @order.id %></h4>
-    <h5 class="my-4 font-weight-bold">Order Summary:</h5>
-    <div class="row">
-      <% @order.order_items.each do |order_item| %>
-      <div class="col-6 text-right">
-        <h6> <%= order_item.item.name %>: </h6>
-      </div>
-      <div class="col-6">
-        <h6><%= order_item.quantity %></h6>
-      </div>
-      <% end %>
+
+    <div class="order-summary-container border border-info mt-2">
+      <h4 class="order-label mt-4 text-center"> Order # <%= @order.id %></h4>
+      <h6 class="summary-label mt-2 mb-2 pb-2 text-center">Summary</h6>
     </div>
-  </div>
-  <div class="container border border-info mt-4">
-    <div class="my-4">
+    <div class="container border border-info p-2">
       <div class="row">
-        <div class="col-6">
-          <h5> <strong>Total items: </strong></h5>
+        <% @order.order_items.each do |order_item| %>
+          <div class="order-details d-flex mb-1">
+            <div class="quantity-label">
+              <h6 style="font-weight: 700"><%= order_item.quantity %>x</h6>
+            </div>
+            <div class="quantity-details">
+              <h6> <%= order_item.item.name %> </h6>
+            </div>
         </div>
-        <div class="col-6">
-          <h5><%= @total_quantity  %></h5>
-        </div>
+         <% end %>
       </div>
-      <div class="row">
-        <div class="col-6">
-          <h5> <strong>Total price: </strong></h5>
-        </div>
-        <div class="col-6">
-          <h5><%= @order.total_price.to_i %> 000</h5>
-        </div>
+    </div>
+
+
+  <div class="container border border-info mt-2">
+    <div class="my-2">
+      <div class="total-details d-flex mb-1">
+          <div class="total-label">
+            <h6 style="margin-bottom: 0; font-weight: 700; font-size: 18px">Total items: </h6>
+          </div>
+          <div class="price-label text-right">
+           <h6 style="margin-bottom: 0; font-weight: 700; font-size: 18px"><%= @total_quantity %></h6>
+          </div>
+      </div>
+      <div class="total-details d-flex">
+          <div class="total-label">
+            <h6 style="margin-bottom: 0; font-weight: 700; font-size: 18px">Total price: </h6>
+          </div>
+          <div class="price-label text-right">
+           <h6 style="margin-bottom: 0; font-weight: 700; font-size: 18px">Rp <%= @order.total_price.to_i %></span>000</h6>
+          </div>
       </div>
     </div>
   </div>
 
 
-  <div class="form-actions">
-    <%= f.button :submit, "Confirm Order", class: 'btn btn-custom w-100 mt-2' %>
+  <div class="next-button">
+    <%= f.button :submit, "Confirm Order", class: 'btn btn-info col-12 mt-2 menu-next-button font-bolder' %>
   </div>
   <% end %>
 </div>

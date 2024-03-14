@@ -13,6 +13,11 @@ export default class extends Controller {
     // console.log(this.apiKeyValue);
     // console.log(this.orderMarkerValue);
 
+    const cartLabel = document.getElementById("lblCartCount");
+    if (cartLabel) {
+      cartLabel.remove();
+    }
+
     mapboxgl.accessToken = this.apiKeyValue;
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -83,10 +88,11 @@ export default class extends Controller {
     const now = new Date();
     let future = addInterval(now, {
       [HOURS]: 0,
-      [MINUTES]: 30,
-    });
-    console.log(now);
-    console.log(future);
+      [MINUTES]: 30
+    })
+    // console.log(now)
+    // console.log(future)
+
 
     const intervalDiv = document.getElementById("interval");
     if (intervalDiv) {
@@ -105,7 +111,8 @@ export default class extends Controller {
     const orderPopup = new mapboxgl.Popup().setHTML(
       this.orderMarkerValue.info_window_html
     );
-    new mapboxgl.Marker()
+
+    new mapboxgl.Marker({ color: '#e0b531' })
       .setLngLat([this.orderMarkerValue.lng, this.orderMarkerValue.lat])
       .setPopup(orderPopup)
       .addTo(this.map);
@@ -115,7 +122,8 @@ export default class extends Controller {
       `<h2>Warung Sika</h2>
       <button class="mapboxgl-popup-close-button" type="button" aria-label="Close popup" aria-hidden="true">×</button>`
     );
-    new mapboxgl.Marker()
+
+    new mapboxgl.Marker({ color: '#e0b531' })
       .setLngLat([115.1295623, -8.6508524])
       .setPopup(sikaPopup)
       .addTo(this.map);
@@ -189,7 +197,7 @@ export default class extends Controller {
                     "line-cap": "round",
                   },
                   paint: {
-                    "line-color": "green",
+                    "line-color": "#38621a",
                     "line-width": [
                       "interpolate",
                       ["linear"],

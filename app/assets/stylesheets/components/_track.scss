@@ -1,64 +1,73 @@
-.card-feedback {
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-justify-content: space-around;
-text-align: center;
+.container-track {
+// background-color: rgb(250, 247, 247);
+  font-size: 17px;
 }
-.track-btn {
-justify-content: space-around;
-padding: 5%;
+
+.card-feedback {
+  text-justify: auto;
+  text-align: center;
+  border-radius: 2px;
 }
 
 .track-btn, a{
-text-align: center;
-color: black;
-text-decoration: none;
+  text-align: center;
+  color: black;
+  text-decoration: none;
 }
 
 .btn1, .btn2 {
-background-color:#e0b531;
-border-radius: 5px;
-border: none;
-width: 75%;
-text-align: center;
-font-size: 14px;
+  background-color:#e0b531;
+  border-radius: 2px;
+  border: none;
+  // font-size: 14px;
+  font-weight: bolder;
+  text-justify: distribute-all-lines;
+  width: 150px;
 }
+
 .btn3 {
-background-color:#e0b531;
-border-radius: 5px;
-border: none;
-text-align: center;
+  background-color:#e0b531;
+  border-radius: 2px;
+  border: none;
+  margin-left: 30% !important;
+  width: 150px;
+  font-weight: bolder;
 }
 
 .info {
-color: #e0b531;
-font-size: smaller;
+  color: #e0b531;
+  font-size: smaller;
 }
 
 .tracking-title{
-text-align: end;
+  text-align: end;
 }
 
-.badge-track .badge{
-width: 100%;
-color: #e0b531;
+.card-track {
+  color: black;
+  text-align: center;
+  border-radius: 2px;
+}
+#interval {
+  color: #e0b531;
 }
 
 #time {
-padding: 2px;
+  padding: 2px;
 }
 
 .badge, .interval {
-text-align: start;
-font-size: smaller;
-margin-top: 10%;
+  text-align: center;
+  font-size: smaller;
+  margin-top: 5%;
+  color: #232321;
 }
 .driver-direction {
-text-align: center;
-font-weight: bolder;
-
+  text-align: center;
+  font-weight: bolder;
 }
 
 .card-instructions {
-background-color: hsl(0, 2%, 91%);
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: hsl(0, 2%, 91%);
+border-radius: 2px;
 }
