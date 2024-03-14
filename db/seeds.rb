@@ -11,7 +11,7 @@ User.destroy_all
 puts "Seeding users..."
 
 # Create Users
-10.times do
+1.times do
   User.create!(
     email: Faker::Internet.unique.email,
     password: 'password'
@@ -49,7 +49,7 @@ puts "Seeding orders..."
 users = User.all
 items = Item.all
 
-20.times do
+2.times do
   order = Order.create!(
     order_date: Faker::Date.backward(days: 14),
     address: Faker::Address.full_address,

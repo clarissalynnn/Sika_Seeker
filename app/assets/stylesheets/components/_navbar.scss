@@ -13,35 +13,38 @@ $header-font: "Niconne", "Helvetica", sans-serif;
 .drop-menu-link {
   color: white;
   margin-bottom: 30px;
-  // margin-left: 10px;
   font-size: 24px;
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  letter-spacing: 2px;
 }
 
 .offcanvas-body {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the left */
+  align-items: flex-start;
 }
 
 .navbar-nav .nav-item {
-  display: flex; /* Use flexbox for nav-items */
-  align-items: center; /* Vertically center align items */
-  width: 100%; /* Ensure nav-items take full width */
-}
-
-.drop-menu-link {
-  margin-left: 0; /* Remove any existing left margin */
-  display: flex; /* Use flexbox for links */
-  align-items: center; /* Vertically center align items */
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .navbar-nav .nav-item .fa-home {
   margin-left: 7px;
   margin-right: 15px;
 }
+
 .navbar-nav .nav-item .fa-utensils {
   margin-left: 11.8px;
   margin-right: 19px;
+}
+
+.navbar-nav .nav-item .fa-list-check {
+  margin-left: 10px;
+  margin-right: 17px;
 }
 
 .navbar-nav .nav-item .fa-info-circle {
@@ -50,6 +53,10 @@ $header-font: "Niconne", "Helvetica", sans-serif;
 }
 
 .navbar-nav .nav-item .fa-arrow-right-from-bracket {
+  margin-left: 10px;
+  margin-right: 17px;
+}
+.navbar-nav .nav-item .fa-right-to-bracket {
   margin-left: 10px;
   margin-right: 17px;
 }
