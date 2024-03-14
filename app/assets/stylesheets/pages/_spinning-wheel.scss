@@ -44,41 +44,73 @@
 }
 
 .wheel-container .one {
-  background-color: rgb(248, 222, 126); // Adjust transparency here (0.8 for example)
+  background-color: rgb(
+    248,
+    222,
+    126
+  ); // Adjust transparency here (0.8 for example)
   left: 50%;
 }
 .wheel-container .two {
-  background-color: rgb(255, 253, 208); // Adjust transparency here (0.8 for example)
+  background-color: rgb(
+    255,
+    253,
+    208
+  ); // Adjust transparency here (0.8 for example)
   transform: rotate(45deg);
 }
 .wheel-container .three {
-  background-color: rgb(248, 222, 126); // Adjust transparency here (0.8 for example)
+  background-color: rgb(
+    248,
+    222,
+    126
+  ); // Adjust transparency here (0.8 for example)
   transform: rotate(90deg);
 }
 .wheel-container .four {
-  background-color: rgb(255, 253, 208); // Adjust transparency here (0.8 for example)
+  background-color: rgb(
+    255,
+    253,
+    208
+  ); // Adjust transparency here (0.8 for example)
   transform: rotate(135deg);
 }
 .wheel-container .five {
-  background-color: rgb(248, 222, 126); // Adjust transparency here (0.8 for example)
+  background-color: rgb(
+    248,
+    222,
+    126
+  ); // Adjust transparency here (0.8 for example)
   transform: rotate(180deg);
 }
 .wheel-container .six {
-  background-color: rgb(255, 253, 208); // Adjust transparency here (0.8 for example)
+  background-color: rgb(
+    255,
+    253,
+    208
+  ); // Adjust transparency here (0.8 for example)
   transform: rotate(225deg);
 }
 .wheel-container .seven {
-  background-color: rgb(248, 222, 126); // Adjust transparency here (0.8 for example)
+  background-color: rgb(
+    248,
+    222,
+    126
+  ); // Adjust transparency here (0.8 for example)
   transform: rotate(270deg);
 }
 .wheel-container .eight {
-  background-color: rgb(255, 253, 208); // Adjust transparency here (0.8 for example)
+  background-color: rgb(
+    255,
+    253,
+    208
+  ); // Adjust transparency here (0.8 for example)
   transform: rotate(315deg);
 }
 
 .arrow {
   position: absolute;
-  top: 32.8%;
+  top: 35%;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
@@ -94,6 +126,6 @@
   margin-top: 20px;
   z-index: 2;
   opacity: 0.9;
-  font-family: 'Libre Baskerville';
+  font-family: "Libre Baskerville";
   font-size: 18px;
 }

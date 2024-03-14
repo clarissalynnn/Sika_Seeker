@@ -13,9 +13,9 @@
 
   <div class="<%= 'd-none' if current_user.is_driver? %>">
       <div class="card card-track m-2 p-2">
-              <div><span class="badge">Order sent to the restaurant at  <%= @order.created_at.strftime("%r") %></span></div>
+              <div><span class="badge">Order sent to the restaurant at  <%= (@order.created_at + 8.hours).strftime("%r") %></span></div>
                  <% if @order.status == "pending" %>
-              <div><span class="badge text-start">Waiting for restaurant confirmation <%= Time.now.strftime("%r") %></span></div>
+              <div><span class="badge text-start">Waiting for restaurant confirmation <%= (@order.created_at + 8.hours + 2.minutes).strftime("%r") %></span></div>
                 <div class="interval" id="interval"></div>
                    <% elsif @order.status == "in_progress" %>
               <div><span class="badge text-start">Order confirmed at <%= Time.now.strftime("%r") %> </span></div>
