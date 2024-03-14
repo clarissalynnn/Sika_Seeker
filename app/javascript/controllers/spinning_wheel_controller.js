@@ -25,12 +25,11 @@ export default class extends Controller {
         console.log(data);
         this.itemsTarget.value = data.random_dishes.map((item) => item[3]).join(',')
         const filteredDishes = data.random_dishes.map(dish => {
-          return `<div class="col-6 col-sm-4 text-center">
-          <div class="rounded-4 d-flex justify-content-center align-items-center border border-custom border-3" style="background: url('${dish[1]}') no-repeat center center; background-size: cover; width: 100%; padding-top: 100%;">
-          </div>
-          <h5 class="pt-2">${dish[0]}</h5>
-          <h5><span>$</span>${dish[2]}</h5>
-        </div>`;
+          return `<div class="col-6 col-sm-4 d-flex flex-column align-items-center text-center" style="height: auto; margin-bottom: 0;">
+              <div class="rounded-2 border border-custom border-2" style="background: url('${dish[1]}') center/cover no-repeat; width: 80px; height: 80px;"></div>
+              <h6 class="pt-2">${dish[0]}</h6>
+              <p><span>Rp </span>${dish[2]}.000</p>
+          </div>`
         });
         this.contentTarget.innerHTML = filteredDishes.join("")
       });
