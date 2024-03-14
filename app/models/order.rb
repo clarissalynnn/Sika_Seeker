@@ -30,6 +30,10 @@ class Order < ApplicationRecord
     total_quantity
   end
 
+  def get_order
+    order = self
+  end
+
   private
 
   def driver_must_be_driver

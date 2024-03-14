@@ -47,7 +47,17 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    @order = Order.find(params[:id])
+    if params[:id] == "new"
+      @order = Order.create(
+        order_date: Date.today,
+        customer_id: current_user.id,
+        driver_id: User.driver.first.id,
+        total_price: 0,
+        status: "pending"
+      )
+    else
+      @order = Order.find(params[:id])
+    end
     @order.total_price = @order.calculate_total_price
     @total_quantity = @order.calculate_total_quantity
     @order.save

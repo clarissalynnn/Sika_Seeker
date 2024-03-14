@@ -1,0 +1,6 @@
+<%= link_to checkout_path((@order && @order.id) || 'new'), class: "shopping-cart navbar-brand text-center", style: "margin: 0;" do %>
+  <div>
+    <i class="fa text-white" style="font-size: 24px; margin-left: 16.99px">&#xf07a;</i>
+    <span class='badge badge-warning' id='lblCartCount'> 0 </span>
+  </div>
+<% end %>

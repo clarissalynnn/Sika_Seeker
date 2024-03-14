@@ -2,11 +2,15 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="cart-number"
 export default class extends Controller {
-  static targets = ["number", "items", "addButton"];
+  static targets = ["number", "items", "addButton", "next"];
 
   connect() {
     console.log("Connected!");
     this.cartItems = [];
+    document.querySelector(".shopping-cart").addEventListener("click", (e) => {
+      e.preventDefault();
+      this.nextTarget.click();
+    });
   }
 
   addToCart(event) {
