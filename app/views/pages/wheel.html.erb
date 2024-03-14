@@ -14,8 +14,8 @@
     <div class="eight fs-1">❓</div>
   </div>
   <div class="wheel-btns d-flex flex-column w-100">
-    <button data-action="click->spinning-wheel#spin" class="btn btn-custom mx-5" id="spin" style="letter-spacing: 2px;">Spin</button>
-    <%= link_to items_index_path, { class: "btn btn-custom mt-2 mx-5", style: "letter-spacing: 2px;" } do %> Menu <% end %>
+    <button data-action="click->spinning-wheel#spin" class="btn btn-custom mx-5 border-2" id="spin" style="letter-spacing: 2px; font-family: 'Libre Baskerville'; font-size: 18px;">Spin</button>
+    <%= link_to items_index_path, { class: "btn btn-custom-outline mt-2 mx-5", style: "letter-spacing: 2px; font-size: 18px;" } do %> Menu <% end %>
   </div>
 </div>
 
@@ -32,12 +32,12 @@
               <div data-spinning-wheel-target="content" class="row gx-2 gy-2">
               </div>
             </div>
-            <div class="modal-footer d-flex flex-column">
+            <div class="next-button">
               <%= form_with(url: "/pages/wheel/create", model: Order.new, method: :post) do |f| %>
                 <%= f.hidden_field :item_ids, data: {spinning_wheel_target:"items"}  %>
-                <%= f.submit "Checkout", class:"btn btn-custom-outline", style: "padding: 5px 123px;" %>
+                <%= f.submit "Checkout", class:"btn btn-info col-12 my-2 w-100" %>
               <% end %>
-              <button type="button" class="btn btn-custom w-100" data-bs-dismiss="modal">Spin Again</button>
+              <button type="button" class="btn btn-custom-outline col-12 mt-2 w-100" data-bs-dismiss="modal" style="color: #e0b531">Spin Again</button>
 
             </div>
           </div>

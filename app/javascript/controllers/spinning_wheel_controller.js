@@ -27,8 +27,8 @@ export default class extends Controller {
         const filteredDishes = data.random_dishes.map(dish => {
           return `<div class="col-6 col-sm-4 d-flex flex-column align-items-center text-center" style="height: auto; margin-bottom: 0;">
               <div class="rounded-2 border border-custom border-2" style="background: url('${dish[1]}') center/cover no-repeat; width: 80px; height: 80px;"></div>
-              <h6 class="pt-2">${dish[0]}</h6>
-              <p><span>Rp </span>${dish[2]}.000</p>
+              <h6 class="pt-2" style="font-size: 18px; font-weight: bold">${dish[0]}</h6>
+              <p style="font-family: 'Libre Baskerville'"><span>Rp </span>${dish[2]}.000</p>
           </div>`
         });
         this.contentTarget.innerHTML = filteredDishes.join("")
