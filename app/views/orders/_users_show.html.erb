@@ -4,23 +4,24 @@
 </div>
 
 <% @order.order_items.each do |order_item| %>
-  <div class="container">
+
       <%= render "item_card", order_item: order_item %>
-  </div>
+
 <% end %>
 
-<div class="container">
-  <div class="container">
-    <div class="container">
-      <div class="card-container p-3 border border-info">
-        <div class="total-details d-flex justify-content-end">
-          <h6><strong>Total: </strong> </h6>
-          <h6> Rp <span id="total-price" data-quantity-target="totalprice">0</span>000</h6>
-        </div>
-          <div class="wheel-btns">
-            <%= link_to checkout_path(@order), class: "btn btn-custom w-100 mt-2" do %>Checkout<% end %>
+
+<div class="cart-total-container">
+    <div class="total-card-container p-3 border border-info w-100">
+      <div class="total-details d-flex">
+          <div class="total-label">
+            <h6 style="margin-bottom: 0; font-weight: 700; font-size: 18px">Total: </h6>
+          </div>
+          <div class="price-label text-right">
+           <h6 style="margin-bottom: 0; font-weight: 700; font-size: 18px">Rp <span id="total-price" data-quantity-target="totalprice">0</span>000</h6>
           </div>
       </div>
     </div>
-  </div>
+    <div class="next-button">
+      <%= link_to checkout_path(@order), class: "btn btn-info col-12 my-2 menu-next-button font-bolder" do %>Checkout<% end %>
+    </div>
 </div>

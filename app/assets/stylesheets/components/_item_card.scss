@@ -78,6 +78,7 @@
 
 .price-container {
   display: flex;
+  justify-content: space-between;
   .price-label {
     margin-left: 125px;
   }
@@ -85,6 +86,7 @@
 
 .cart-quantity {
   display: flex;
+  justify-content: space-between;
   margin-bottom: 15px;
   .input-field {
     margin-left: 107px;
