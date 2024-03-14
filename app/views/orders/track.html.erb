@@ -1,5 +1,9 @@
-<div class="container p-2">
-  <p class="tracking-title">Order  #<%= @order.id %> : <strong style="color: #e0b531;"><%= @order.status %></strong></p>
+<div class="container-track p-1">
+  <p class="tracking-title m-2">Order <strong>#<%= @order.id %></strong><% if @order.status == "completed" %> : <strong style="color: #0e9d45;"><%= @order.status %></strong>
+  <% else %>
+ : <strong style="color: #e0b531;"><%= @order.status %></strong>
+<% end %></p>
+
   <div style="width: 100%; height: 400px;"
     data-controller="track-map"
     data-track-map-order-marker-value="<%= @order_marker %>"
@@ -8,39 +12,36 @@
   </div>
 
   <div class="<%= 'd-none' if current_user.is_driver? %>">
-      <div class="card p-2 mt-1">
-
-        <div class="badge-track p-2">
-              <div><span class="badge  rounded-pill text-bg-secondary text-end">Order sent to the restaurant at  <%= @order.created_at.strftime("%r") %></span></div>
+      <div class="card card-track m-2 p-2">
+              <div><span class="badge">Order sent to the restaurant at  <%= @order.created_at.strftime("%r") %></span></div>
                  <% if @order.status == "pending" %>
-              <div><span class="badge  rounded-pill bg-secondary text-end">Waiting for restaurant confirmation <%= Time.now.strftime("%r") %></span></div>
+              <div><span class="badge text-start">Waiting for restaurant confirmation <%= Time.now.strftime("%r") %></span></div>
                 <div class="interval" id="interval"></div>
                    <% elsif @order.status == "in_progress" %>
-              <div><span class="badge  rounded-pill bg-secondary text-end">Order confirmed <%= Time.now.strftime("%r") %> </span></div>
+              <div><span class="badge text-start">Order confirmed at <%= Time.now.strftime("%r") %> </span></div>
                 <div class="interval" id="interval"></div>
                    <% elsif @order.status == "out_for_delivery" %>
                 <div class="interval" id="interval"></div>
-              <div><span class="badge  rounded-pill bg-secondary text-end"> Out for delivery <%= Time.now.strftime("%r") %> </span></div>
+              <div><span class="badge text-start"> Out for delivery <%= Time.now.strftime("%r") %> </span></div>
                    <% elsif  @order.status == "completed" %>
-              <div><span class="badge  rounded-pill text-bg-success text-end">Delivery completed at <%= Time.now.strftime("%r") %></span></div>
+              <div><span class="badge text-bg-success">Delivery completed at <%= Time.now.strftime("%r") %></span></div>
                  <% end %>
-        </div>
+  </div>
            <hr>
         <div class="track-btn">
-          <div class="row 2">
-            <div class="col md-6"><button class="btn1 p-2"><%= link_to "Browse Home", items_index_path %></button></div>
-            <div class="col md-6"><button class="btn2 p-2"><%= link_to "Order again", orders_path %></button></div>
+          <div class="btn-group">
+            <button class="btn1 btn-lg p-3 m-2"><%= link_to "Browse Home", items_index_path %></button>
+            <button class="btn2 btn-lg p-3 m-2"><%= link_to "Order again", orders_path %></button>
           </div>
         </div>
-              <p class="info p-3"><i class="fa-solid fa-circle-info"></i> If you selected 'Cash' as your payment method, you can sill pay the courier by credit card.</p>
-        <div class="card-feedback m-2 p-4">
-          <div class="row 2">
-              <div class="col"><a href="tel:?"><i class="fa-solid fa-phone" style="color: grey;"></i></a>  Contact Restaurant</div>
+              <p class="info p-3"><i class="fa-solid fa-circle-info"></i> If you selected 'Cash' as your payment method, you can still pay the courier by credit card.</p>
+        <div class="card card-feedback m-3 p-4">
+          <div class="row 2 m-1">
+              <div class="col"><a href="tel:?"><i class="fa-solid fa-phone" style="color: grey;"></i></a> Contact Restaurant</div>
               <div class="col"><a href="mailto:your@email.com?subject=Contact Request from Sika Seeker"><i class="fa-solid fa-message" style="color: grey;"></i></a> Order Feedback</div>
           </div>
         </div>
 
-      </div>
     </div>
      <div class="<%= 'd-none' if !current_user.is_driver? %>">
         <div class="card-instructions p-2 m-3">
@@ -48,8 +49,8 @@
             <div id="time"></div>
             <div id="directions"></div>
             <div class="driver-instructions" id="instructions"></div>
-            <h2>📍 <%= @order.address %></h2>
+            <h2 class="text-center">📍 <%= @order.address %></h2>
        </div>
-        <button class="btn3 m-2 p-2"><%= link_to "Browse orders", orders_path %></button>
+        <button class="btn3 p-3 m-2"><%= link_to "Browse orders", orders_path %></button>
     </div>
 </div>

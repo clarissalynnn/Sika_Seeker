@@ -1,7 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
 
-import driving_steps from "./driving_steps.json" assert { type: "json" };
-
 // Connects to data-controller="track-map"
 export default class extends Controller {
   static values = {
@@ -81,8 +79,8 @@ export default class extends Controller {
       [HOURS]: 0,
       [MINUTES]: 30
     })
-    console.log(now)
-    console.log(future)
+    // console.log(now)
+    // console.log(future)
 
     const intervalDiv = document.getElementById("interval");
     if (intervalDiv) {
@@ -98,7 +96,8 @@ export default class extends Controller {
     const orderPopup = new mapboxgl.Popup().setHTML(
       this.orderMarkerValue.info_window_html
     );
-    new mapboxgl.Marker()
+
+    new mapboxgl.Marker({ color: '#e0b531' })
       .setLngLat([this.orderMarkerValue.lng, this.orderMarkerValue.lat])
       .setPopup(orderPopup)
       .addTo(this.map);
@@ -108,7 +107,8 @@ export default class extends Controller {
       `<h2>Warung Sika</h2>
       <button class="mapboxgl-popup-close-button" type="button" aria-label="Close popup" aria-hidden="true">×</button>`
     );
-    new mapboxgl.Marker()
+
+    new mapboxgl.Marker({ color: '#e0b531' })
       .setLngLat([115.1295623, -8.6508524])
       .setPopup(sikaPopup)
       .addTo(this.map);
@@ -182,7 +182,7 @@ export default class extends Controller {
                     "line-cap": "round",
                   },
                   paint: {
-                    "line-color": "green",
+                    "line-color": "#38621a",
                     "line-width": [
                       "interpolate",
                       ["linear"],

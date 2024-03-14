@@ -93,5 +93,4 @@ class OrdersController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {order: @order})
     }.to_json
   end
-
 end
