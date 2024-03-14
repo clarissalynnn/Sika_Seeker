@@ -14,3 +14,26 @@
 @import "accordion";
 @import "track";
 @import "checkout";
+
+.btn {
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+.button {
+  letter-spacing: 1.2px;
+  font-weight: 900;
+}
+
+.accordion-button {
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 1px;
+}
+
+p {
+  letter-spacing: 1px;
+}
