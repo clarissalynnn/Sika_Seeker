@@ -1,13 +1,11 @@
 import { Controller } from "@hotwired/stimulus";
 
-import driving_steps from "./driving_steps.json" assert { type: "json" };
-
 // Connects to data-controller="track-map"
 export default class extends Controller {
   static values = {
     apiKey: String,
     orderMarker: Object,
-    isDriver: Boolean
+    isDriver: Boolean,
   };
 
   connect() {
@@ -43,26 +41,32 @@ export default class extends Controller {
 
   displayDrivingDirections(steps) {
     const drivingDiv = document.getElementById("directions");
-    drivingDiv.innerHTML = `<p>Distance to destination: <strong>${Math.floor(steps[1].distance)}m</strong></p>`;
+    drivingDiv.innerHTML = `<p>Distance to destination: <strong>${Math.floor(
+      steps[1].distance
+    )}m</strong></p>`;
     const timeDiv = document.getElementById("time");
-    timeDiv.innerHTML = `<p>Order preparation: <strong>${Math.floor(steps[0].duration)}min</strong></p><p>Trip duration: <strong>${Math.floor(
+    timeDiv.innerHTML = `<p>Order preparation: <strong>${Math.floor(
+      steps[0].duration
+    )}min</strong></p><p>Trip duration: <strong>${Math.floor(
       steps[1].distance / 60
-      )} min 🛵 </strong></p>`;
+    )} min 🛵 </strong></p>`;
     // get the sidebar and add the instructions
-    const instructions = document.getElementById('instructions');
+    const instructions = document.getElementById("instructions");
 
-    let tripInstructions = '';
-      for (const step of steps) {
-      tripInstructions += `<li>In <strong>${Math.floor(step.maneuver.bearing_after)}m </strong> ${step.maneuver.instruction}</li>`;
-      }
-      instructions.innerHTML = `<ol>${tripInstructions}</ol>`;
+    let tripInstructions = "";
+    for (const step of steps) {
+      tripInstructions += `<li>In <strong>${Math.floor(
+        step.maneuver.bearing_after
+      )}m </strong> ${step.maneuver.instruction}</li>`;
+    }
+    instructions.innerHTML = `<ol>${tripInstructions}</ol>`;
 
     // array index
     // const YEARS = 0
     // const MONTHS = 1
-    const DAYS = 2
-    const HOURS = 3
-    const MINUTES = 4
+    const DAYS = 2;
+    const HOURS = 3;
+    const MINUTES = 4;
     // test time interval
     function addInterval(date, interval) {
       const parts = [
@@ -72,30 +76,34 @@ export default class extends Controller {
         date.getHours(),
         date.getMinutes(),
         date.getSeconds(),
-        date.getMilliseconds()
-      ]
+        date.getMilliseconds(),
+      ];
       // fetch keys/values
       for (const [unit, value] of Object.entries(interval)) {
-          parts[unit] += value
+        parts[unit] += value;
       }
 
-      return new Date(...parts)
+      return new Date(...parts);
     }
     const now = new Date();
     let future = addInterval(now, {
       [HOURS]: 0,
       [MINUTES]: 30
     })
-    console.log(now)
-    console.log(future)
+    // console.log(now)
+    // console.log(future)
+
 
     const intervalDiv = document.getElementById("interval");
     if (intervalDiv) {
-      const formatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const formatter = new Intl.DateTimeFormat("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
       const formattedTime = formatter.format(future);
       intervalDiv.innerHTML = `<p>*Estimated delivery time at <strong> ${formattedTime} </strong></p>`;
     }
-
   }
 
   #addMarkersToMap() {
@@ -103,7 +111,8 @@ export default class extends Controller {
     const orderPopup = new mapboxgl.Popup().setHTML(
       this.orderMarkerValue.info_window_html
     );
-    new mapboxgl.Marker()
+
+    new mapboxgl.Marker({ color: '#e0b531' })
       .setLngLat([this.orderMarkerValue.lng, this.orderMarkerValue.lat])
       .setPopup(orderPopup)
       .addTo(this.map);
@@ -113,7 +122,8 @@ export default class extends Controller {
       `<h2>Warung Sika</h2>
       <button class="mapboxgl-popup-close-button" type="button" aria-label="Close popup" aria-hidden="true">×</button>`
     );
-    new mapboxgl.Marker()
+
+    new mapboxgl.Marker({ color: '#e0b531' })
       .setLngLat([115.1295623, -8.6508524])
       .setPopup(sikaPopup)
       .addTo(this.map);
@@ -187,7 +197,7 @@ export default class extends Controller {
                     "line-cap": "round",
                   },
                   paint: {
-                    "line-color": "green",
+                    "line-color": "#38621a",
                     "line-width": [
                       "interpolate",
                       ["linear"],
