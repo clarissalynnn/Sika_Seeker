@@ -102,3 +102,21 @@
     display: inline;
   }
 }
+
+.form-inputs {
+  font-family: 'Libre Baskerville';
+}
+
+.order-details {
+  justify-content: space-between;
+}
+
+.order-label {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.order-summary-container {
+  background-color: $yellow;
+}
