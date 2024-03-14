@@ -8,7 +8,7 @@
         <div data-controller="search-menu">
           <%= form_with url: items_index_path, method: :get, html: {class: "mb-4", data: {search_menu_target: "form", action: "submit->search-menu#clear"}} do |f| %>
             <%= f.text_field :query,
-                              class: "form-control border-info border-2 rounded-2",
+                              class: "search-form form-control border-info border-2 rounded-2'",
                               value: params[:query],
                               data: {
                                 search_menu_target: "input",
