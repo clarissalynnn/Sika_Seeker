@@ -1,12 +1,12 @@
 <div class="col-6">
-  <div class="entry">
+  <div class="entry border border-info my-2">
     <%= image_tag item.photo, alt: "text" %>
-      <h6><%= item.name %></h6>
+      <h6 style="font-size: 18px; font-weight: bold;"><%= item.name %></h6>
         <div class="price">
-          <h5>Rp <%= item.price %></h5>
+          <h6>Rp <%= item.price %>.000</h6>
         </div>
-      <button class="button" data-cart-number-target='addButton' data-action='click->cart-number#addToCart'
-          data-item-id="<%= item.id %>">Add to cart
+      <button class="button w-100" style="font-family: 'Libre Baskerville'" data-cart-number-target='addButton' data-action='click->cart-number#addToCart'
+        data-item-id="<%= item.id %>">Add
       </button>
   </div>
 </div>

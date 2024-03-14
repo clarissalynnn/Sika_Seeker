@@ -6,12 +6,12 @@
 <% @orders.each do |order| %>
   <%= link_to order_path(order), class: "link" do  %>
     <div class="container py-2">
-      <div class="card">
+      <div class="card" style="border: 1px solid #e0b531;">
         <div class="card-body d-flex flex-column justify-content-between">
           <div>
             <h3> Order #<%= order.id %> </h3>
             <h3>Address: <%= order.address %></h3>
-            <p>$ <%= order.total_price %></p>
+            <p>Rp <%= order.total_price %></p>
             <p><%= order.order_date %></p>
           </div>
           <div class="mt-auto">

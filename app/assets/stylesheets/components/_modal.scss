@@ -1,6 +1,7 @@
 .btn-custom {
   background-color: $yellow;
   color: white;
+
 }
 
 .btn-custom:hover,
@@ -21,6 +22,12 @@
 }
 
 .btn-custom-outline{
+  background-color: white;
+  border: 2px solid $yellow;
+  color: $yellow;
+}
+
+.btn-custom-outline:hover{
   background-color: white;
   border: 2px solid $yellow;
   color: $yellow;

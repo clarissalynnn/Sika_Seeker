@@ -83,6 +83,4 @@ class PagesController < ApplicationController
     end
     @random_dishes
   end
-
-
 end

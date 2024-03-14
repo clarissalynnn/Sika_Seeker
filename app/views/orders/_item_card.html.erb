@@ -1,35 +1,35 @@
-<div class="container">
-  <div class="container" data-controller="quantity" data-quantity-order-item-id-value="<%= order_item.id %>"
-    data-quantity-order-id-value="<%= @order.id %>">
-    <div class="card-container p-3 border border-info">
-      <div class="cart-image-title-button">
-        <div class="col-s4">
-          <%= image_tag order_item.item.photo, alt: "text", class: "image-tag"%>
-        </div>
-        <div class="col-s7">
-          <h6><strong><%= order_item.item.name %></strong></h6>
-        </div>
-          <i class="fa fa-remove"
-            data-action="click->quantity#destroyOrderItem" data-order-id="<%= @order.id %>" data-order-item-id="<%= order_item.id %>">
-          </i>
+<div class="container" data-controller="quantity" data-quantity-order-item-id-value="<%= order_item.id %>"
+  data-quantity-order-id-value="<%= @order.id %>">
+  <div class="card-container p-3 border border-info w-100">
+    <div class="cart-image-title-button">
+      <div class="col-s4">
+        <%= image_tag order_item.item.photo, alt: "text", class: "image-tag border-info rounded"%>
       </div>
-      <div class="cart-quantity">
-        <div class="quantity-label">
-          <h6><strong>Quantity: </strong></h6>
-        </div>
-        <div class="input-field">
-          <i class="fa-solid fa-minus" data-action="click->quantity#decrease"></i>
-          <input id="quantity" type="number" value=<%= order_item.quantity %> data-quantity-target="quantity">
-          <i class="fa-solid fa-plus" data-action="click->quantity#increase"></i>
-        </div>
+      <div class="col-s7">
+        <h6 style="font-size: 20px; font-weight: 700; padding-left: 20px; padding-top: 20px"><%= order_item.item.name %></h6>
       </div>
-      <div class="price-container">
-        <div class="total-label">
-          <h6><strong>Price: </strong></h6>
-        </div>
-        <div class="price-label text-right">
-          <h6>Rp <span data-quantity-target="price"><%= order_item.item.price %></span> 000</h6>
-        </div>
+        <i class="fa fa-remove"
+          data-action="click->quantity#destroyOrderItem" data-order-id="<%= @order.id %>" data-order-item-id="<%= order_item.id %>">
+        </i>
+    </div>
+    <div class="cart-quantity">
+      <div class="quantity-label">
+        <h6><strong>Quantity: </strong></h6>
+      </div>
+      <div class="input-field">
+        <!--<i class="fa-solid fa-minus" data-action="click->quantity#decrease"></i>-->
+        <button data-action="click->quantity#decrease" style="background-color: #e0b531; border: 0;color: white;font-weight: bold;width: 35px;">-</button>
+        <input id="quantity" type="number" value=<%= order_item.quantity %> data-quantity-target="quantity">
+        <button data-action="click->quantity#increase" style="background-color: #e0b531; border: 0;color: white;font-weight: bold;width: 35px;">+</button>
+        <!--<i class="fa-solid fa-plus" data-action="click->quantity#increase"></i>-->
+      </div>
+    </div>
+    <div class="price-container">
+      <div class="total-label">
+        <h6><strong>Price: </strong></h6>
+      </div>
+      <div class="price-label text-right">
+        <h6>Rp <span data-quantity-target="price"><%= order_item.item.price %></span> 000</h6>
       </div>
     </div>
   </div>
